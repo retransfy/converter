@@ -274,6 +274,8 @@ function rtConvertAndDisplayRt(event) {
   resultMessage.textContent = ""; // Clear the content
   resultMessage.style.display = "none"; // Hide the result message
 
+  proceedButton.style.display = "none";
+
   //All fields validation
   if (!senderCountry || !receiverCountry || isNaN(sendAmount) || !sendAmount || !handleFee) {
     messageError.textContent = "Please complete all required fields";
@@ -317,8 +319,9 @@ function rtConvertAndDisplayRt(event) {
 
   // The Convertion result (GHANA to OTHER COUNTRIES) / ADD transaction Fee
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Amount to send: ${sendAmount.toFixed(2)} GHS (${senderCountry})\n
-        Amount to be received: ${amountToReceive.toFixed()} FCFA (${receiverCountry})\n
+    resultMessage.textContent = `Sending: ${sendAmount.toFixed(2)} GHS\n
+        Amount to receive:\n
+        ${amountToReceive.toFixed(0)} FCFA\n
         Transaction fee: ${transactionFee.toFixed(2)} GHS\n
         Total Amount: ${totalAmount.toFixed(2)} GHS`;
     resultMessage.style.whiteSpace = "pre-line"
@@ -329,8 +332,9 @@ function rtConvertAndDisplayRt(event) {
 
   //The Convertion result (OTHER COUNTRIES to GHANA) / ADD transaction Fee
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 1000000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Amount to send: ${sendAmount.toLocaleString('fr-FR')} FCFA (${senderCountry})\n
-        Amount to be received: ${amountToReceive.toFixed(2)} GHS (${receiverCountry})\n
+    resultMessage.textContent = `Sending: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
+        Amount to receive:\n
+        ${amountToReceive.toFixed(2)} GHS\n
         Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
         Total Amount: ${totalAmount.toLocaleString('fr-FR')} FCFA`;
     resultMessage.style.whiteSpace = "pre-line"
@@ -341,8 +345,9 @@ function rtConvertAndDisplayRt(event) {
 
   // The Convertion result (GHANA to OTHER COUNTRIES) / SUBSTRACT transaction Fee
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Amount to send: ${sendAmount.toFixed(2) - transactionFee.toFixed(2)}  GHS (${senderCountry})\n
-          Amount to be received: ${amountToReceive.toLocaleString('fr-FR')} FCFA (${receiverCountry})\n
+    resultMessage.textContent = `Sending: ${sendAmount.toFixed(2) - transactionFee.toFixed(2)} GHS\n
+          Amount to receive:\n
+          ${amountToReceive.toFixed(0)} FCFA\n
           Transaction fee: ${transactionFee.toFixed(2)} GHS\n
           Total Amount: ${sendAmount.toFixed(2)} GHS`;
     resultMessage.style.whiteSpace = "pre-line"
@@ -353,8 +358,9 @@ function rtConvertAndDisplayRt(event) {
 
   //The Convertion result (OTHER COUNTRIES to GHANA) / SUBSTRACT transaction Fee
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 1000000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Amount to send: ${(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA (${senderCountry})\n
-          Amount to be received: ${amountToReceive.toFixed(2)} GHS (${receiverCountry})\n
+    resultMessage.textContent = `Sending: ${(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA\n
+          Amount to receive:\n
+          ${amountToReceive.toFixed(2)} GHS\n
           Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA\n
           Total Amount: ${sendAmount.toLocaleString('fr-FR')} FCFA`;
     resultMessage.style.whiteSpace = "pre-line"
