@@ -120,8 +120,8 @@ option:first-child:hover {
 
 .green_result {
   color: black;
-  font-family: 'Ubuntu', sans-serif;
-  line-height: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 10px;
   text-align: center;
   background-color: white;
   display: flex;
@@ -129,7 +129,7 @@ option:first-child:hover {
   align-items: center;
   justify-content: center;
   gap: 0px;
-  padding: 30px;
+  padding: 10px;
   margin: 0;
   border-radius: 20px;
   box-shadow: 2px 2px 4px rgb(73, 73, 73, 0.3);
