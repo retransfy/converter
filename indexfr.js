@@ -496,7 +496,7 @@ ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Bénéficiare: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Montant: ${sendAmount.toFixed(2)} GHS
-Fee: ${transactionFee.toFixed(2)} GHS
+Frais: ${transactionFee.toFixed(2)} GHS
 Total: ${totalAmount.toFixed(2)} GHS\n
 Montant à recevoir: ${amountToReceive.toFixed(0)} FCFA`;
   }
@@ -507,7 +507,7 @@ ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Bénéficiare: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Montant: ${sendAmount.toFixed(2) - transactionFee} GHS
-Fee: ${transactionFee.toFixed(2)} GHS
+Frais: ${transactionFee.toFixed(2)} GHS
 Total: ${sendAmount.toFixed(2)} GHS\n
 Montant à recevoir: ${amountToReceive.toFixed(0)} FCFA`;
   }
@@ -518,7 +518,7 @@ ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Bénéficiare: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Montant: ${sendAmount} FCFA
-Fee: ${transactionFee} FCFA
+Frais: ${transactionFee} FCFA
 Total: ${totalAmount} FCFA\n
 Montant à recevoir: ${amountToReceive.toFixed(0)} GHS`;
   }
@@ -529,7 +529,7 @@ ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Bénéficiare: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Montant: 
 ${sendAmount - transactionFee} FCFA
-Fee: ${transactionFee} FCFA
+Frais: ${transactionFee} FCFA
 Total: ${sendAmount} FCFA\n
 Montant à recevoir: ${amountToReceive.toFixed(0)} GHS`;
   }
