@@ -464,29 +464,50 @@ function shareOnWhatsApp() {
   let message = `Hello`;
 
 
-    if (senderCountry === "GHANA") {
-      message = ` Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-    Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-    Amount: ${sendAmount.toFixed(2)} GHS | Fee: ${transactionFee.toFixed(2)} GHS |
-    Total: ${totalAmount.toFixed(2)} GHS | Amount to receive: ${amountToReceive.toFixed(0)} FCFA`;
-    }
-
-    else if (senderCountry !== "GHANA") {
-      message = ` Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-    Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-    Amount: ${sendAmount} FCFA | Fee: ${transactionFee} FCFA |
-    Total: ${totalAmount} FCFA | Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
-    }
-    let messageOutput = document.getElementById("messageOutput");
-    messageOutput.textContent = message;
-
-
-    message = document.getElementById("messageOutput").textContent;
-    var encodedMessage = encodeURIComponent(message);
-    var receiverNumber = "233554459813";
-
-    var whatsappURL = "https://wa.me/" + receiverNumber + "?text=" + encodedMessage;
-
-    window.open(whatsappURL, "_blank");
-
+  if (senderCountry === "GHANA" && handleFee === "ADD FEE") {
+    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toFixed(2)} GHS | Fee: ${transactionFee.toFixed(2)} GHS
+Total: ${totalAmount.toFixed(2)} GHS\n
+Amount to receive: ${amountToReceive.toFixed(0)} FCFA`;
   }
+
+  else if (senderCountry === "GHANA" && handleFee === "SUBSTRACT FEE") {
+    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toFixed(2) - transactionFee} GHS | Fee: ${transactionFee.toFixed(2)} GHS
+Total: ${sendAmount.toFixed(2)} GHS\n
+Amount to receive: ${amountToReceive.toFixed(0)} FCFA`;
+  }
+
+  else if (senderCountry !== "GHANA" && handleFee === "ADD FEE") {
+    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount} FCFA | Fee: ${transactionFee} FCFA
+Total: ${totalAmount} FCFA\n
+Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
+  }
+
+  else if (senderCountry !== "GHANA" && handleFee === "SUBSTRACT FEE") {
+    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount - transactionFee} FCFA | Fee: ${transactionFee} FCFA
+Total: ${sendAmount} FCFA\n
+Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
+  }
+
+
+
+  let messageOutput = document.getElementById("messageOutput");
+  messageOutput.textContent = message;
+
+
+  message = document.getElementById("messageOutput").textContent;
+  var encodedMessage = encodeURIComponent(message);
+  var receiverNumber = "233554459813";
+
+  var whatsappURL = "https://wa.me/" + receiverNumber + "?text=" + encodedMessage;
+
+  window.open(whatsappURL, "_blank");
+
+}
