@@ -465,33 +465,45 @@ function shareOnWhatsApp() {
 
 
   if (senderCountry === "GHANA" && handleFee === "ADD FEE") {
-    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${sendAmount.toFixed(2)} GHS | Fee: ${transactionFee.toFixed(2)} GHS
+    message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toFixed(2)} GHS
+Fee: ${transactionFee.toFixed(2)} GHS
 Total: ${totalAmount.toFixed(2)} GHS\n
 Amount to receive: ${amountToReceive.toFixed(0)} FCFA`;
   }
 
   else if (senderCountry === "GHANA" && handleFee === "SUBSTRACT FEE") {
-    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${sendAmount.toFixed(2) - transactionFee} GHS | Fee: ${transactionFee.toFixed(2)} GHS
+    message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toFixed(2) - transactionFee} GHS
+Fee: ${transactionFee.toFixed(2)} GHS
 Total: ${sendAmount.toFixed(2)} GHS\n
 Amount to receive: ${amountToReceive.toFixed(0)} FCFA`;
   }
 
   else if (senderCountry !== "GHANA" && handleFee === "ADD FEE") {
-    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${sendAmount} FCFA | Fee: ${transactionFee} FCFA
+    message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount} FCFA
+Fee: ${transactionFee} FCFA
 Total: ${totalAmount} FCFA\n
 Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
   }
 
   else if (senderCountry !== "GHANA" && handleFee === "SUBSTRACT FEE") {
-    message = `Sender: ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-Receiver: ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${sendAmount - transactionFee} FCFA | Fee: ${transactionFee} FCFA
+    message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount - transactionFee} FCFA
+Fee: ${transactionFee} FCFA
 Total: ${sendAmount} FCFA\n
 Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
   }
