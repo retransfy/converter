@@ -864,7 +864,7 @@ function senderMomoNumber() {
     }
 
     if (numericValue.length === 10) {
-      const validPrefixes = ["057", "027"];
+      const validPrefixes = ["057", "027", "026", "056"];
       const prefix = numericValue.slice(0, 3);
 
       if (validPrefixes.includes(prefix)) {
@@ -1250,7 +1250,7 @@ function receiverMomoNumber() {
     }
 
     if (numericValue.length === 10) {
-      const validPrefixes = ["057", "027"];
+      const validPrefixes = ["057", "027", "026", "056"];
       const prefix = numericValue.slice(0, 3);
 
       if (validPrefixes.includes(prefix)) {
