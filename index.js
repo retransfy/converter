@@ -1,4 +1,3 @@
-
 let rate = 19;
 let senderCountry = document.getElementById("senderCountry").value;
 let receiverCountry = document.getElementById("receiverCountry").value;
@@ -1599,9 +1598,9 @@ if (senderCountry === "GHANA" && handleFee === "ADD FEE" && isValidsenderNumber 
 message = `Sender: 
 ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Receiver: 
-${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Amount: ${sendAmount.toFixed(2)} GHS
-Fee: ${roundUp(transactionFee).toFixed(2)} GHS
+Fee: ${roundUp(transactionFee).toFixed(2)} GHS\n
 Total: ${roundUp(totaLamount).toFixed(2)} GHS\n
 Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
 
@@ -1615,14 +1614,14 @@ Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-F
 }
 
   else if (senderCountry === "GHANA" && handleFee === "SUBSTRACT FEE" && isValidsenderNumber && isValidreceiverNumber) {
-    message = `Sender: 
-  ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-  Receiver: 
-  ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
-  Amount: ${sendAmount.toFixed(2) - transactionFee} GHS
-  Fee: ${transactionFee.toFixed(2)} GHS
-  Total: ${sendAmount.toFixed(2)} GHS\n
-  Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} FCFA`;
+message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toFixed(2) - transactionFee} GHS
+Fee: ${transactionFee.toFixed(2)} GHS\n
+Total: ${sendAmount.toFixed(2)} GHS\n
+Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} FCFA`;
 
     messageOutput = document.getElementById("messageOutput");
     encodedMessage = encodeURIComponent(message);
@@ -1634,14 +1633,14 @@ Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-F
   }
 
   else if (senderCountry !== "GHANA" && handleFee === "ADD FEE" && isValidsenderNumber && isValidreceiverNumber) {
-    message = `Sender: 
-  ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-  Receiver: 
-  ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
-  Amount: ${sendAmount.toLocaleString('fr-FR')} FCFA
-  Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA
-  Total: ${totaLamount.toLocaleString('fr-FR')} FCFA\n
-  Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} GHS`;
+message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${sendAmount.toLocaleString('fr-FR')} FCFA
+Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
+Total: ${totaLamount.toLocaleString('fr-FR')} FCFA\n
+Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} GHS`;
 
     messageOutput = document.getElementById("messageOutput");
     encodedMessage = encodeURIComponent(message);
@@ -1653,14 +1652,14 @@ Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-F
   }
 
   else if (senderCountry !== "GHANA" && handleFee === "SUBSTRACT FEE" && isValidsenderNumber && isValidreceiverNumber) {
-    message = `Sender: 
-  ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-  Receiver: 
-  ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
-  Amount: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
-  Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA
-  Total: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
-  Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
+message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
+Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
+Total: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
+Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
 
 
     messageOutput = document.getElementById("messageOutput");
@@ -1675,14 +1674,14 @@ Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-F
 
 
   if (senderCountry === "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
-    message = `Sender: 
-  ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-  Receiver: 
-  ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
-  Amount: ${amountToSend.toFixed(2)} GHS
-  Fee: ${transactionFee2.toFixed(2)} GHS
-  Total: ${(amountToSend + transactionFee2).toFixed(2)} GHS\n
-  Amount to receive: ${receiveAmount.toLocaleString('fr-FR')} FCFA`;
+message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${amountToSend.toFixed(2)} GHS
+Fee: ${transactionFee2.toFixed(2)} GHS\n
+Total: ${(amountToSend + transactionFee2).toFixed(2)} GHS\n
+Amount to receive: ${receiveAmount.toLocaleString('fr-FR')} FCFA`;
 
 
     messageOutput = document.getElementById("messageOutput");
@@ -1696,14 +1695,14 @@ Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-F
 
   else if (senderCountry !== "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
     totaLamount = amountToSend + transactionFee2;
-    message = `Sender: 
-  ${senderMmNumber} (${senderNetwork}) ${senderCountry}
-  Receiver: 
-  ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry} \n
-  Amount: ${Math.round(amountToSend).toLocaleString('fr-FR')} FCFA
-  Fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA
-  Total: ${Math.round(totaLamount).toLocaleString('fr-FR')} FCFA\n
-  Amount to receive: ${receiveAmount.toFixed(2)} GHS`;
+message = `Sender: 
+${senderMmNumber} (${senderNetwork}) ${senderCountry}
+Receiver: 
+${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
+Amount: ${Math.round(amountToSend).toLocaleString('fr-FR')} FCFA
+Fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA\n
+Total: ${Math.round(totaLamount).toLocaleString('fr-FR')} FCFA\n
+Amount to receive: ${receiveAmount.toFixed(2)} GHS`;
 
 
     messageOutput = document.getElementById("messageOutput");
