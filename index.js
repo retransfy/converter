@@ -285,6 +285,9 @@ function onReceiverCountryChange() {
   }
 }
 
+
+
+
 function roundDown(number) {
   return Math.floor(number / 5) * 5;
 }
@@ -292,6 +295,8 @@ function roundDown(number) {
 function roundUp(number) {
   return Math.ceil(number / 5) * 5;
 }
+
+
 
 
 
@@ -595,12 +600,13 @@ let totalAmount = sendAmount + transactionFee;
   // The Convertion result (GHANA to TOGO) / ADD transaction Fee
   if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "ADD FEE") {
     resultMessage.textContent = `Sending: ${sendAmount.toFixed(2)} GHS\n
-        Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
-        Transaction fee: ${transactionFee.toFixed(2)} GHS\n
-        Paying: ${totalAmount.toFixed(2)} GHS`;
-    resultMessage.style.whiteSpace = "pre-line"
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
+    Transaction fee: ${transactionFee.toFixed(2)} GHS\n
+    Paying: ${totalAmount.toFixed(2)} GHS`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -610,12 +616,13 @@ let totalAmount = sendAmount + transactionFee;
   // The Convertion result (GHANA to BCB) / ADD transaction Fee
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= 100 && sendAmount <= 100000 && handleFee === "ADD FEE") {
     resultMessage.textContent = `Sending: ${sendAmount.toFixed(2)} GHS\n
-        Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
-        Transaction fee: ${transactionFee.toFixed(2)} GHS\n
-        Paying: ${totalAmount.toFixed(2)} GHS`;
-    resultMessage.style.whiteSpace = "pre-line"
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
+    Transaction fee: ${transactionFee.toFixed(2)} GHS\n
+    Paying: ${totalAmount.toFixed(2)} GHS`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -626,13 +633,14 @@ let totalAmount = sendAmount + transactionFee;
 
   //The Convertion result (ALL COUNTRIES to GHANA) / ADD transaction Fee
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 5000000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Sending: ${roundAmount(sendAmount).toLocaleString('fr-FR')} FCFA\n
-        Amount to receive: ${amountToReceive.toFixed(2)} GHS\n
-        Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
-        Paying: ${roundUp(totalAmount).toLocaleString('fr-FR')} FCFA`;
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.textContent = `Sending: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
+    Amount to receive: ${amountToReceive.toFixed(2)} GHS\n
+    Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
+    Paying: ${Math.round(totalAmount).toLocaleString('fr-FR')} FCFA`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -642,13 +650,14 @@ let totalAmount = sendAmount + transactionFee;
 
   // The Convertion result (GHANA to TOGO) / SUBSTRACT transaction Fee
   else if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: ${sendAmount.toFixed(2) - transactionFee.toFixed(2)} GHS\n
-          Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
-          Transaction fee: ${transactionFee.toFixed(2)} GHS\n
-          Paying: ${sendAmount.toFixed(2)} GHS`;
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.textContent = `Sending: ${(sendAmount - transactionFee).toFixed(2)} GHS\n
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA\n
+    Transaction fee: ${transactionFee.toFixed(2)} GHS\n
+    Paying: ${sendAmount.toFixed(2)} GHS`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -658,13 +667,14 @@ let totalAmount = sendAmount + transactionFee;
 
   // The Convertion result (GHANA to BCB) / SUBSTRACT transaction Fee
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= 100 && sendAmount <= 100000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: ${sendAmount.toFixed(2) - transactionFee.toFixed(2)} GHS\n
-          Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA\n
-          Transaction fee: ${transactionFee.toFixed(2)} GHS\n
-          Paying: ${sendAmount.toFixed(2)} GHS`;
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.textContent = `Sending: ${(sendAmount - transactionFee).toFixed(2)} GHS\n
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA\n
+    Transaction fee: ${transactionFee.toFixed(2)} GHS\n
+    Paying: ${sendAmount.toFixed(2)} GHS`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -674,13 +684,14 @@ let totalAmount = sendAmount + transactionFee;
 
   //The Convertion result (ALL COUNTRIES to GHANA) / SUBSTRACT transaction Fee
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 5000000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: ${(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA\n
-          Amount to receive: ${amountToReceive.toFixed(2)} GHS\n
-          Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA\n
-          Paying: ${roundUp(sendAmount).toLocaleString('fr-FR')} FCFA`;
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.textContent = `Sending: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA\n
+    Amount to receive: ${amountToReceive.toFixed(2)} GHS\n
+    Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA\n
+    Paying: ${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA`;
+
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -693,13 +704,13 @@ let totalAmount = sendAmount + transactionFee;
   // The Convertion result (GHANA to TOGO) when Amount to receive is entered
   if (senderCountry === "GHANA" && receiverCountry === "TOGO" && receiveAmount >= ((50 * 1000) / 19) && receiveAmount <= ((100000 * 1000) / rate)) {
     resultMessage.textContent = `Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA\n
-  Amount to send: ${roundUp(amountToSend).toFixed(2)} GHS\n
-  Transaction fee: ${roundUp(transactionFee2).toFixed(2)} GHS\n
-  Paying: ${roundUp((amountToSend + transactionFee2)).toFixed(2)} GHS`;
+    Amount to send: ${amountToSend.toFixed(2)} GHS\n
+    Transaction fee: ${transactionFee2.toFixed(2)} GHS\n
+    Paying: ${(amountToSend + transactionFee2).toFixed(2)} GHS`;
 
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -710,13 +721,13 @@ let totalAmount = sendAmount + transactionFee;
   // The Convertion result (GHANA to BCB) when amount to receive is entered
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && receiveAmount >= ((100 * 1000) / 19) && receiveAmount <= ((100000 * 1000) / rate)) {
     resultMessage.textContent = `Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA\n
-  Amount to send: ${roundUp(amountToSend).toFixed(2)} GHS\n
-  Transaction fee: ${roundUp(transactionFee2).toFixed(2)} GHS\n
-  Paying: ${roundUp((amountToSend + transactionFee2)).toFixed(2)} GHS`;
+    Amount to send: ${amountToSend.toFixed(2)} GHS\n
+    Transaction fee: ${transactionFee2.toFixed(2)} GHS\n
+    Paying: ${(amountToSend + transactionFee2).toFixed(2)} GHS`;
 
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -726,14 +737,14 @@ let totalAmount = sendAmount + transactionFee;
 
   //The Convertion result (ALL COUNTRIES to GHANA) when amount to receive is entered
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && receiveAmount >= (rate - 1) && receiveAmount <= (((rate - 1) * 5000000) / 1000)) {
-    resultMessage.textContent = `Amount to receive: ${receiveAmount.toFixed(0)} GHS\n
-  Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA\n
-  Transaction fee: ${roundUp(transactionFee2)} FCFA\n
-  Paying: ${roundUp(Math.round((amountToSend + transactionFee2))).toLocaleString('fr-FR')} FCFA`;
+    resultMessage.textContent = `Amount to receive: ${receiveAmount.toFixed(2)} GHS\n
+    Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA\n
+    Transaction fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA\n
+    Paying: ${roundUp(Math.round((amountToSend + transactionFee2))).toLocaleString('fr-FR')} FCFA`;
 
-    resultMessage.style.whiteSpace = "pre-line"
+    resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
-    resultMessage.className = "green_result"
+    resultMessage.className = "green_result";
     proceedButton.style.display = "block";
 
     messageError.textContent = "";
@@ -1600,8 +1611,8 @@ ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Receiver: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Amount: ${sendAmount.toFixed(2)} GHS
-Fee: ${roundUp(transactionFee).toFixed(2)} GHS\n
-Total: ${roundUp(totaLamount).toFixed(2)} GHS\n
+Fee: ${transactionFee.toFixed(2)} GHS\n
+Total: ${totaLamount.toFixed(2)} GHS\n
 Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
 
     messageOutput = document.getElementById("messageOutput");
@@ -1618,10 +1629,10 @@ message = `Sender:
 ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Receiver: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${sendAmount.toFixed(2) - transactionFee} GHS
+Amount: ${(sendAmount - transactionFee).toFixed(2)} GHS
 Fee: ${transactionFee.toFixed(2)} GHS\n
 Total: ${sendAmount.toFixed(2)} GHS\n
-Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} FCFA`;
+Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
 
     messageOutput = document.getElementById("messageOutput");
     encodedMessage = encodeURIComponent(message);
@@ -1639,8 +1650,8 @@ Receiver:
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Amount: ${sendAmount.toLocaleString('fr-FR')} FCFA
 Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
-Total: ${totaLamount.toLocaleString('fr-FR')} FCFA\n
-Amount to receive: ${Math.round(amountToReceive).toLocaleString('fr-FR')} GHS`;
+Total: ${Math.round(totaLamount).toLocaleString('fr-FR')} FCFA\n
+Amount to receive: ${amountToReceive.toFixed(2)} GHS`;
 
     messageOutput = document.getElementById("messageOutput");
     encodedMessage = encodeURIComponent(message);
@@ -1658,8 +1669,8 @@ Receiver:
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Amount: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
 Fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
-Total: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
-Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
+Total: ${Mat.round(sendAmount).toLocaleString('fr-FR')} FCFA\n
+Amount to receive: ${amountToReceive.toFixed(2)} GHS`;
 
 
     messageOutput = document.getElementById("messageOutput");
@@ -1672,6 +1683,7 @@ Amount to receive: ${amountToReceive.toFixed(0)} GHS`;
   }
 
 
+//When Amount to receive is entered -----------------------------------------------------------------------------
 
   if (senderCountry === "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
 message = `Sender: 
@@ -1681,7 +1693,7 @@ ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
 Amount: ${amountToSend.toFixed(2)} GHS
 Fee: ${transactionFee2.toFixed(2)} GHS\n
 Total: ${(amountToSend + transactionFee2).toFixed(2)} GHS\n
-Amount to receive: ${receiveAmount.toLocaleString('fr-FR')} FCFA`;
+Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA`;
 
 
     messageOutput = document.getElementById("messageOutput");
@@ -1694,14 +1706,14 @@ Amount to receive: ${receiveAmount.toLocaleString('fr-FR')} FCFA`;
   } 
 
   else if (senderCountry !== "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
-    totaLamount = amountToSend + transactionFee2;
+  totaLamount = amountToSend + transactionFee2;
 message = `Sender: 
 ${senderMmNumber} (${senderNetwork}) ${senderCountry}
 Receiver: 
 ${receiverMmNumber} (${receiverNetwork}) ${receiverCountry}\n
-Amount: ${Math.round(amountToSend).toLocaleString('fr-FR')} FCFA
+Amount: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA
 Fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA\n
-Total: ${Math.round(totaLamount).toLocaleString('fr-FR')} FCFA\n
+Total: ${roundUp(Math.round(totaLamount)).toLocaleString('fr-FR')} FCFA\n
 Amount to receive: ${receiveAmount.toFixed(2)} GHS`;
 
 
