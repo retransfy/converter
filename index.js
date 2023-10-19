@@ -1,4 +1,4 @@
-let rate = 18.5;
+let rate = 19;
 let senderCountry = document.getElementById("senderCountry").value;
 let receiverCountry = document.getElementById("receiverCountry").value;
 let sendAmountInput = document.getElementById("sendAmount");
