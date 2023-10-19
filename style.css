@@ -1,6 +1,6 @@
 body {
-  background-color: orange;
   background-image: url("media/cover.jpg");
+  background-color: orange;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -130,16 +130,9 @@ input {
   background-color: azure;
 }
 
+
 input::placeholder {
   text-align: center;
-}
-
-#switchAmount {
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  margin-top: 5px;
-  font-size: 12px;
-  color: #004625;
 }
 
 select {
@@ -169,6 +162,30 @@ option:first-child:hover {
   background-color: white;
 }
 
+#switchAmount {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #004625;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toggleButton {
+  background-color: #004625;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 2px;
+}
+
+
 .submitbutton {
   display: block;
   background-color: #076c5e;
@@ -185,6 +202,12 @@ option:first-child:hover {
 #errorMessage,
 #resultMessage {
   display: none;
+}
+
+
+#messageOutput{
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 30px;
 }
 
 .red_error {
@@ -269,32 +292,3 @@ option:first-child:hover {
   display: none;
 }
 
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#toggleButton {
-  background-color: #004625;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  margin-top: 2px;
-}
-
-#messageContainer{
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0px;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 2px 2px 4px rgb(73, 73, 73, 0.3);
-  height: auto;
-  margin-bottom: 20px;
-  width: 300px;
-}
