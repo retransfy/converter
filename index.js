@@ -7,15 +7,11 @@ let sendAmount = parseFloat(sendAmountInput.value);
 let receiveAmountInput = document.getElementById("receiveAmount");
 let receiveAmount = parseFloat(receiveAmountInput.value);
 let handleFee = document.getElementById("handleFee").value;
-let senderNetwork = document.getElementById("senderNetwork").value;
-let senderMmNumber = document.getElementById("senderMmNumber").value;
-let receiverNetwork = document.getElementById("receiverNetwork").value;
-let receiverMmNumber = document.getElementById("receiverMmNumber").value;
 let messageError = document.getElementById("errorMessage");
-let messageError2 = document.getElementById("errorMessage2");
 let resultMessage = document.getElementById("resultMessage");
 let senderFieldError = document.getElementById("senderField");
 let receiverFieldError = document.getElementById("receiverField");
+const supportEl = document.getElementById("support");
 
 
 //Clear Error messages
@@ -42,8 +38,6 @@ toggleButton.addEventListener("click", function () {
     receiveAmountInput.value = "";
     messageError.textContent = "";
     messageError.className = "";
-    messageError2.textContent = "";
-    messageError2.className = "";
     resultMessage.textContent = "";
     resultMessage.style.display = "none";
     proceedButton.style.display = "none";
@@ -56,8 +50,6 @@ toggleButton.addEventListener("click", function () {
     sendAmountInput.value = "";
     messageError.textContent = "";
     messageError.className = "";
-    messageError2.textContent = "";
-    messageError2.className = "";
     resultMessage.textContent = "";
     resultMessage.style.display = "none";
     proceedButton.style.display = "none";
@@ -91,94 +83,7 @@ function onSenderCountryChange() {
     senderFieldError.style.display = "none";
   }
   
-  const senderCountrySelect = document.querySelector('#senderCountry');
-  const senderNetworkSelect = document.querySelector('#senderNetwork');
-  const selectedCountry = senderCountrySelect.value;
-
-  // Clear existing options
-  senderNetworkSelect.innerHTML = '';
-
-  // Add default option
-  const defaultOption = document.createElement('option');
-  defaultOption.value = 'N/A';
-  defaultOption.textContent = 'Select';
-  senderNetworkSelect.appendChild(defaultOption);
-
-  if (selectedCountry === "TOGO") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Togo)';
-
-    const togocelOption = document.createElement('option');
-    togocelOption.value = 'TOGOCEL';
-    togocelOption.textContent = 'Togocel';
-
-    senderNetworkSelect.appendChild(moovOption);
-    senderNetworkSelect.appendChild(togocelOption);
   }
-
-  else if (selectedCountry === "BENIN") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Benin)';
-
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Benin)';
-
-    senderNetworkSelect.appendChild(moovOption);
-    senderNetworkSelect.appendChild(mtnOption);
-  }
-
-  else if (selectedCountry === "BURKINA FASO") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Burkina Faso)';
-
-    const orangeOption = document.createElement('option');
-    orangeOption.value = 'ORANGE';
-    orangeOption.textContent = 'Orange (Burkina Faso)';
-
-    senderNetworkSelect.appendChild(moovOption);
-    senderNetworkSelect.appendChild(orangeOption);
-  }
-
-  else if (selectedCountry === "IVORY COAST") {
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Ivory Coast)';
-
-    const orangeOption = document.createElement('option');
-    orangeOption.value = 'ORANGE';
-    orangeOption.textContent = 'Orange (Ivory Coast)';
-
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Ivory Coast)';
-
-    senderNetworkSelect.appendChild(mtnOption);
-    senderNetworkSelect.appendChild(orangeOption);
-    senderNetworkSelect.appendChild(moovOption);
-  }
-
-  else {
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Ghana)';
-
-    const vodafoneOption = document.createElement('option');
-    vodafoneOption.value = 'VODAFONE';
-    vodafoneOption.textContent = 'Vodafone (Ghana)';
-
-    const airtelTigoOption = document.createElement('option');
-    airtelTigoOption.value = 'AIRTELTIGO';
-    airtelTigoOption.textContent = 'AirtelTigo (Ghana)';
-
-    senderNetworkSelect.appendChild(mtnOption);
-    senderNetworkSelect.appendChild(vodafoneOption);
-    senderNetworkSelect.appendChild(airtelTigoOption);
-  }
-}
 
 
 // Networks options based on selected receiverCountry
@@ -192,92 +97,7 @@ function onReceiverCountryChange() {
     receiverFieldError.className = "";
     receiverFieldError.style.display = "none";
   }
-
-
-  const receiverCountrySelect = document.querySelector('#receiverCountry');
-  const receiverNetworkSelect = document.querySelector('#receiverNetwork');
-  const selectedReceiverCountry = receiverCountrySelect.value;
-
-  receiverNetworkSelect.innerHTML = '';
-
-  // Add default option
-  const defaultOption = document.createElement('option');
-  defaultOption.value = 'N/A';
-  defaultOption.textContent = 'Select';
-  receiverNetworkSelect.appendChild(defaultOption);
-
-  if (selectedReceiverCountry === "TOGO") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Togo)';
-
-    const togocelOption = document.createElement('option');
-    togocelOption.value = 'TOGOCEL';
-    togocelOption.textContent = 'Togocel';
-
-    receiverNetworkSelect.appendChild(moovOption);
-    receiverNetworkSelect.appendChild(togocelOption);
-  }
-  else if (selectedReceiverCountry === "BENIN") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Benin)';
-
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Benin)';
-
-    receiverNetworkSelect.appendChild(moovOption);
-    receiverNetworkSelect.appendChild(mtnOption);
-  }
-  else if (selectedReceiverCountry === "BURKINA FASO") {
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Burkina Faso)';
-
-    const orangeOption = document.createElement('option');
-    orangeOption.value = 'ORANGE';
-    orangeOption.textContent = 'Orange (Burkina Faso)';
-
-    receiverNetworkSelect.appendChild(moovOption);
-    receiverNetworkSelect.appendChild(orangeOption);
-  }
-  else if (selectedReceiverCountry === "IVORY COAST") {
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Ivory Coast)';
-
-    const orangeOption = document.createElement('option');
-    orangeOption.value = 'ORANGE';
-    orangeOption.textContent = 'Orange (Ivory Coast)';
-
-    const moovOption = document.createElement('option');
-    moovOption.value = 'MOOV';
-    moovOption.textContent = 'Moov (Ivory Coast)';
-
-    receiverNetworkSelect.appendChild(mtnOption);
-    receiverNetworkSelect.appendChild(orangeOption);
-    receiverNetworkSelect.appendChild(moovOption);
-  }
-  else {
-    const mtnOption = document.createElement('option');
-    mtnOption.value = 'MTN';
-    mtnOption.textContent = 'MTN (Ghana)';
-
-    const vodafoneOption = document.createElement('option');
-    vodafoneOption.value = 'VODAFONE';
-    vodafoneOption.textContent = 'Vodafone (Ghana)';
-
-    const airtelTigoOption = document.createElement('option');
-    airtelTigoOption.value = 'AIRTELTIGO';
-    airtelTigoOption.textContent = 'AirtelTigo (Ghana)';
-
-    receiverNetworkSelect.appendChild(mtnOption);
-    receiverNetworkSelect.appendChild(vodafoneOption);
-    receiverNetworkSelect.appendChild(airtelTigoOption);
-  }
 }
-
 
 
 
@@ -297,7 +117,7 @@ function calculateTransactionFee() {
   let transactionFee = 0;
 //(GHANA to TOGO)
   if (senderCountry === "GHANA" && receiverCountry === "TOGO") {
-    if (sendAmount >= 50 && sendAmount <= 150) { transactionFee = 5; }
+    if (sendAmount >= rate && sendAmount <= 150) { transactionFee = 5; }
     else if (sendAmount >= 151 && sendAmount <= 500) { transactionFee = 10; }
     else if (sendAmount >= 501 && sendAmount <= 800) { transactionFee = 15; }
     else if (sendAmount >= 801 && sendAmount <= 1200) { transactionFee = 20; }
@@ -305,13 +125,12 @@ function calculateTransactionFee() {
     else if (sendAmount >= 2001 && sendAmount <= 5000) { transactionFee = 40; }
     else if (sendAmount >= 5001 && sendAmount <= 8000) { transactionFee = 70; }
     else if (sendAmount >= 8001 && sendAmount <= 10000) { transactionFee = 95; }
-    else if (sendAmount >= 10001 && sendAmount <= 30000) { transactionFee = ((sendAmount * 1) / 100); }
-    else if (sendAmount >= 30001 && sendAmount <= 100000) { transactionFee = ((sendAmount * 9) / 1000); }
+    else if (sendAmount >= 10001 && sendAmount <= (rate * 1000)) { transactionFee = 200; }
   }
 
 //(GHANA to BCB)
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO") {
-    if (sendAmount >= 100 && sendAmount <= 150) { transactionFee = 10; }
+    if (sendAmount >= rate && sendAmount <= 150) { transactionFee = 10; }
     else if (sendAmount >= 151 && sendAmount <= 500) { transactionFee = 15; }
     else if (sendAmount >= 501 && sendAmount <= 800) { transactionFee = 20; }
     else if (sendAmount >= 801 && sendAmount <= 1200) { transactionFee = 25; }
@@ -319,9 +138,8 @@ function calculateTransactionFee() {
     else if (sendAmount >= 2001 && sendAmount <= 5000) { transactionFee = 50; }
     else if (sendAmount >= 5001 && sendAmount <= 8000) { transactionFee = 80; }
     else if (sendAmount >= 8001 && sendAmount <= 10000) { transactionFee = 120; }
-    else if (sendAmount >= 10001 && sendAmount <= 30000) { transactionFee = ((sendAmount * 11) / 1000); }
-    else if (sendAmount >= 30001 && sendAmount <= 100000) { transactionFee = ((sendAmount * 1) / 100); }
-  }
+    else if (sendAmount >= 10001 && sendAmount <= (rate * 1000)) { transactionFee = 300; }}
+    
 
 //(ALL COUNTRIES to GHANA)
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA") {
@@ -333,9 +151,7 @@ function calculateTransactionFee() {
     else if (sendAmount >= 60001 && sendAmount <= 100000) { transactionFee = 4000; }
     else if (sendAmount >= 100001 && sendAmount <= 200000) { transactionFee = 5000; }
     else if (sendAmount >= 200001 && sendAmount <= 600000) { transactionFee = 8000; }
-    else if (sendAmount >= 600001 && sendAmount <= 1000000) { transactionFee = 10000; }
-    else if (sendAmount >= 1000001 && sendAmount <= 5000000) { transactionFee = ((sendAmount * 15) / 1000); }
-  }
+    else if (sendAmount >= 600001 && sendAmount <= 1000000) { transactionFee = 10000; }}
 
   return transactionFee;
 }
@@ -345,11 +161,9 @@ function calculateTransactionFee() {
 
 function calculateTransactionFee2() {
   let transactionFee2 = 0;
-  let sendingAmount = (receiveAmount / 1000) * rate;
 //(GHANA to TOGO)
   if (senderCountry === "GHANA" && receiverCountry === "TOGO") {
-    sendingAmount = (receiveAmount / 1000) * rate;
-    if (receiveAmount >= ((50 * 1000) / 19) && receiveAmount <= ((150 * 1000) / rate)) { transactionFee2 = 5; }
+    if (receiveAmount >= ((rate * 1000) / rate) && receiveAmount <= ((150 * 1000) / rate)) { transactionFee2 = 5; }
     else if (receiveAmount >= ((151 * 1000) / rate) && receiveAmount <= ((500 * 1000) / rate)) { transactionFee2 = 10; }
     else if (receiveAmount >= ((501 * 1000) / rate) && receiveAmount <= ((800 * 1000) / rate)) { transactionFee2 = 15; }
     else if (receiveAmount >= ((801 * 1000) / rate) && receiveAmount <= ((1200 * 1000) / rate)) { transactionFee2 = 20; }
@@ -357,14 +171,12 @@ function calculateTransactionFee2() {
     else if (receiveAmount >= ((2001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 40; }
     else if (receiveAmount >= ((5001 * 1000) / rate) && receiveAmount <= ((8000 * 1000) / rate)) { transactionFee2 = 70; }
     else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= ((10000 * 1000) / rate)) { transactionFee2 = 95; }
-    else if (receiveAmount >= ((10001 * 1000) / rate) && receiveAmount <= ((30000 * 1000) / rate)) { transactionFee2 = ((sendingAmount * 1) / 100); }
-    else if (receiveAmount >= ((30001 * 1000) / rate) && receiveAmount <= ((100000 * 1000) / rate)) { transactionFee2 = ((sendingAmount * 9) / 1000); }
+    else if (receiveAmount >= ((10001 * 1000) / rate) && receiveAmount <= (((rate * 1000) * 1000) / rate)) { transactionFee2 = 200; }
   }
 
 //(GHANA to BCB)
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO") {
-    sendingAmount = (receiveAmount / 1000) * rate;
-    if (receiveAmount >= ((100 * 1000) / 19) && receiveAmount <= ((150 * 1000) / 19)) { transactionFee2 = 10; }
+    if (receiveAmount >= ((rate * 1000) / rate) && receiveAmount <= ((150 * 1000) / rate)) { transactionFee2 = 10; }
     else if (receiveAmount >= ((151 * 1000) / rate) && receiveAmount <= ((500 * 1000) / rate)) { transactionFee2 = 15; }
     else if (receiveAmount >= ((501 * 1000) / rate) && receiveAmount <= ((800 * 1000) / rate)) { transactionFee2 = 20; }
     else if (receiveAmount >= ((801 * 1000) / rate) && receiveAmount <= ((1200 * 1000) / rate)) { transactionFee2 = 25; }
@@ -372,8 +184,7 @@ function calculateTransactionFee2() {
     else if (receiveAmount >= ((2001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 50; }
     else if (receiveAmount >= ((5001 * 1000) / rate) && receiveAmount <= ((8000 * 1000) / rate)) { transactionFee2 = 80; }
     else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= ((10000 * 1000) / rate)) { transactionFee2 = 120; }
-    else if (receiveAmount >= ((10001 * 1000) / rate) && receiveAmount <= ((30000 * 1000) / rate)) { transactionFee2 = ((sendingAmount * 11) / 1000); }
-    else if (receiveAmount >= ((30001 * 1000) / rate) && receiveAmount <= ((100000 * 1000) / rate)) { transactionFee2 = ((sendingAmount * 1) / 100); }
+    else if (receiveAmount >= ((10001 * 1000) / rate) && receiveAmount <= (((rate * 1000) * 1000) / rate)) { transactionFee2 = 300; }
   }
 //(ALL COUNTRIES to GHANA)
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && receiveAmount) {
@@ -387,7 +198,6 @@ function calculateTransactionFee2() {
     else if ((receiveAmount >= ((rate2 * 100001) / 1000) && receiveAmount <= ((rate2 * 200000) / 1000))) { transactionFee2 = 5000; }
     else if ((receiveAmount >= ((rate2 * 200001) / 1000) && receiveAmount <= ((rate2 * 600000) / 1000))) { transactionFee2 = 8000; }
     else if ((receiveAmount >= ((rate2 * 600001) / 1000) && receiveAmount <= ((rate2 * 1000000) / 1000))) { transactionFee2 = 10000; }
-    else if ((receiveAmount >= ((rate2 * 1000001) / 1000) && receiveAmount <= ((rate2 * 5000000) / 1000))) { transactionFee2 = ((sendingAmount * 15) / 1000); }
   }
   return transactionFee2;
 }
@@ -451,1250 +261,345 @@ messageError.textContent = "";
 messageError.className = "";
 messageError.style.display = "none";
 
-if (senderCountry === "") {
-  senderFieldError.textContent = "Please select a Country";
-  senderFieldError.className = "red_error2";
-  senderFieldError.style.display = "block";
-  return;
-} 
-if (receiverCountry === "") {
-  receiverFieldError.textContent = "Please select a Country";
-  receiverFieldError.className = "red_error2";
-  receiverFieldError.style.display = "block";
-  return;
-}
 
-if (sendAmountInput.value === "" && receiveAmountInput.value === "" && handleFee.disabled === false) {
-  messageError.textContent = "Please complete all required fields";
+//Field validations
+if (sendAmountInput.value === "" && receiveAmountInput.value === "") {
+  messageError.textContent = "Please Enter the Amount";
   messageError.className = "red_error";
   messageError.style.display = "block";
 } 
-else if (sendAmountInput.value !== "" && receiveAmountInput.value === "" && handleFee.disabled === false) {
+else if (sendAmountInput.value !== "" && receiveAmountInput.value === "") {
   messageError.textContent = "";
   messageError.className = "";
   messageError.style.display = "none";
 }
 
-if (receiveAmountInput.value === "" && sendAmountInput.value === "" && handleFee.disabled === true) {
-  messageError.textContent = "Please complete all required fields";
+if (receiveAmountInput.value === "" && sendAmountInput.value === "") {
+  messageError.textContent = "Please Enter the Amount";
   messageError.className = "red_error";
   messageError.style.display = "block";
 } 
-else if (receiveAmountInput.value !== "" && sendAmountInput.value === "" && handleFee.disabled === true){
+else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
   messageError.textContent = "";
   messageError.className = "";
   messageError.style.display = "none";
 }
 
-if (handleFee === "") {
-  messageError.textContent = "Please complete all required fields";
-  messageError.className = "red_error";
-  messageError.style.display = "block";
-} else {
-  messageError.textContent = "";
-  messageError.className = "";
-  messageError.style.display = "none";
-}
-
-
-   // Countries validations & errors
+   // Domestic transaction errors
   if (senderCountry === receiverCountry) {
-    messageError.textContent = "Sorry, you cannot send money between the same country";
+    messageError.textContent = `Domestic transfer within ${senderCountry} is not available at the moment`;
     messageError.className = "red_error";
     messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
+
   } else if (senderCountry !== "GHANA" && receiverCountry !== "GHANA") {
-    messageError.textContent = "Sorry, you can only send money between Ghana and other countries";
+    messageError.textContent = `Transaction between ${senderCountry} and ${receiverCountry} is not available at the moment`;
     messageError.className = "red_error";
     messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
   }
 
+// Minimum amount errors
+  if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && sendAmount < rate) {
+    messageError.textContent = `The minimum to send from GHANA to ${receiverCountry} is ${rate} GHS.`;
+    messageError.className = "red_error";
+    messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
+  }
 
-  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount < 50) {
-    messageError.textContent = "The minimum to send from GHANA to TOGO is 50 GHS.";
-    messageError.className = "red_error";
-    messageError.style.display = "block";
-  }
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount < 100) {
-    messageError.textContent = "The minimum to send from GHANA to " + receiverCountry + " is 100 GHS.";
-    messageError.className = "red_error";
-    messageError.style.display = "block";
-  }
   else if (senderCountry !== "GHANA" && sendAmount < 1000) {
     messageError.textContent = "The minimum to send from " + senderCountry + " to GHANA is 1000 FCFA";
     messageError.className = "red_error";
     messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
+  }
+
+// Maximum amount errors
+  if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && sendAmount > ((rate * 1000)/2)) {
+    messageError.textContent = `The maximum to send from GHANA to ${receiverCountry} is GHS ${((rate * 1000)/2).toFixed(2)}.
+    For transactions exceeding this amount, please contact our Support Team`;
+
+    supportEl.style.display="block";
+    messageError.className = "red_error";
+    messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
+
+  } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount > ((rate * 1000)/2)) {
+    messageError.textContent = `The maximum to send from ${senderCountry} to GHANA to  is ${(1000000/2).toLocaleString("fr-FR")} FCFA.
+    For transactions exceeding this amount, please contact our Support Team`;
+
+    supportEl.style.display="block";
+    messageError.className = "red_error";
+    messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
   }
 
 
-  if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && sendAmount > 100000) {
-    messageError.textContent = "The maximum to send from GHANA to " + receiverCountry + " is 100000 GHS.";
+// AMOUNT TO RECEIVE
+// Minimum amount error
+if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && receiveAmount < ((rate * 1000) / rate)) {
+    messageError.textContent = `The minimum to be received from GHANA to ${receiverCountry} is ${roundUp(Math.round((rate * 1000) / rate)).toLocaleString('fr-FR')} FCFA`;
     messageError.className = "red_error";
     messageError.style.display = "block";
-  } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount > 5000000) {
-    messageError.textContent = "The maximum to send from " + senderCountry + " to GHANA is 5000000 FCFA";
-    messageError.className = "red_error";
-    messageError.style.display = "block";
-  }
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
 
-
-//-------------------------------------------------------------------------------------------------------------------------------
-if (senderCountry === "GHANA" && receiverCountry === "TOGO" && !sendAmount && receiveAmount < ((50 * 1000) / rate)) {
-    messageError.textContent = `The minimum to be received from GHANA to TOGO is ${roundUp(Math.round((50 * 1000) / rate)).toLocaleString('fr-FR')} FCFA`;
-    messageError.className = "red_error";
-    messageError.style.display = "block";
-  }
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && !sendAmount && receiveAmount < ((100 * 1000) / rate)) {
-    messageError.textContent = `The minimum to be received from GHANA to ${receiverCountry} is ${roundUp(Math.round(((100 * 1000) / rate))).toLocaleString('fr-FR')} FCFA`;
-    messageError.className = "red_error";
-    messageError.style.display = "block";
   }
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount && receiveAmount < rate2) {
     messageError.textContent = `The minimum to be received from ${senderCountry} to GHANA is ${rate2.toFixed(2)} GHS`;
     messageError.className = "red_error";
     messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
 
   }
 
+//Maximum amount error
+  if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && receiveAmount > (((rate * 1000) * 1000) / rate)/2) {
+    messageError.textContent = `The maximum to be received from GHANA to ${receiverCountry} is ${1000000/2} FCFA.
+    For transactions exceeding this amount, please contact our Support Team`;
 
-  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && !sendAmount && receiveAmount > ((100000 * 1000) / rate)) {
-    messageError.textContent = `The maximum to be received from GHANA to TOGO is ${Math.round(((100000 * 1000) / rate)).toLocaleString('fr-FR')} FCFA`;
+    supportEl.style.display="block";
     messageError.className = "red_error";
     messageError.style.display = "block";
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
   }
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && !sendAmount && receiveAmount > ((100000 * 1000) / rate)) {
-    messageError.textContent = `The maximum to be received from GHANA to ${receiverCountry} is ${Math.round(((100000 * 1000) / rate)).toLocaleString('fr-FR')} FCFA`;
+
+  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount && receiveAmount > (((rate2 * 1000000) / 1000)/2)) {
+    messageError.textContent = `The maximum to be received from ${senderCountry} to GHANA is GHS ${(((rate2 * 1000000) / 1000)/2).toFixed(2)}. For transactions exceeding this amount, please contact our Support Team`;
+
+    supportEl.style.display="block";
     messageError.className = "red_error";
     messageError.style.display = "block";
-  }
-  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount && receiveAmount > ((rate2 * 5000000) / 1000)) {
-    messageError.textContent = `The maximum to be received from ${senderCountry} to GHANA is ${((rate2 * 5000000) / 1000).toFixed(2)
-      } GHS`;
-    messageError.className = "red_error";
-    messageError.style.display = "block";
-
-  }
+    resultMessage.textContent="";
+    resultMessage.className = "";
+    resultMessage.style.display = "none";
+    copyButton.style.display = "none";
+}
 
 
-//-----------------------------------------------------------------------------------------------------------------------
-let totalAmount = sendAmount + transactionFee;
-  
 
+// RESULTS FOR VALID ENTRIES
   resultMessage.textContent = ""; 
   resultMessage.style.display = "none";
+  let totalAmount = sendAmount + transactionFee;
   
   //(GHANA to TOGO) / ADDFee
-  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Sending: GHS ${sendAmount.toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee.toFixed(2)}\n
-    Paying: GHS ${totalAmount.toFixed(2)}\n
-    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
+  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "ADD FEE" && true) {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
+    Sending: GHS ${sendAmount.toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Total: GHS ${totalAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
+
   }
   //(GHANA to BCB) / ADDFee
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= 100 && sendAmount <= 100000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Sending: GHS ${sendAmount.toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee.toFixed(2)}\n
-    Paying: GHS ${totalAmount.toFixed(2)}\n
-    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
+  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "ADD FEE") {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
+    Sending: GHS ${sendAmount.toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Total: GHS ${totalAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
     
   }
 
   //(ALL COUNTRIES to GHANA) / ADDFee
-  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 5000000 && handleFee === "ADD FEE") {
-    resultMessage.textContent = `Sending: ${sendAmount.toLocaleString('fr-FR')} FCFA\n
-    Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA\n
-    Paying: ${Math.round(totalAmount).toLocaleString('fr-FR')} FCFA\n
-    Amount to receive: GHS ${amountToReceive.toFixed(2)}`;
+  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= (1000000/2) && handleFee === "ADD FEE") {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: GHS ${amountToReceive.toFixed(2)}
+    Sending: ${sendAmount.toLocaleString('fr-FR')} FCFA
+    Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA
+    Total: ${Math.round(totalAmount).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
   //(GHANA to TOGO) / SUBSTRACTFee
-  else if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= 50 && sendAmount <= 100000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee.toFixed(2)}\n
-    Paying: GHS ${sendAmount.toFixed(2)}\n
-    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA`;
+  else if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "SUBSTRACT FEE") {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
+    Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Total: GHS ${sendAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
   //(GHANA to BCB) / SUBSTRACTFee
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= 100 && sendAmount <= 100000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee.toFixed(2)}\n
-    Paying: GHS ${sendAmount.toFixed(2)}\n
-    Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA`;
+  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "SUBSTRACT FEE") {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA
+    Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Paying: GHS ${sendAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
   //(ALL COUNTRIES to GHANA) / SUBSTRACTFee
-  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= 5000000 && handleFee === "SUBSTRACT FEE") {
-    resultMessage.textContent = `Sending: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA\n
-    Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA\n
-    Paying: ${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA\n
-    Amount to receive: GHS ${amountToReceive.toFixed(2)}`;
+  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= (1000000/2) && handleFee === "SUBSTRACT FEE") {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: GHS ${amountToReceive.toFixed(2)}
+    Sending: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
+    Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA
+    Total: ${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
 
-  //-----------------------------------------------------------------------------------------------------------
+  // AMOUNT TO RECEIVE RESULTS
   //(GHANA to TOGO) when Amount to receive is entered
-  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && receiveAmount >= ((50 * 1000) / rate) && receiveAmount <= ((100000 * 1000) / rate)) {
-    resultMessage.textContent = `Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA\n
-    Amount to send: GHS ${amountToSend.toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee2.toFixed(2)}\n
-    Paying: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
+  if (senderCountry === "GHANA" && receiverCountry === "TOGO" && receiveAmount >= (((rate * 1000) / rate)) && receiveAmount <= ((((rate * 1000) * 1000) / rate)/2)) {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA
+    Amount to send: GHS ${amountToSend.toFixed(2)}
+    Transaction fee: GHS ${transactionFee2.toFixed(2)}
+    Total: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
   //(GHANA to BCB) when amount to receive is entered
-  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && receiveAmount >= ((100 * 1000) / rate) && receiveAmount <= ((100000 * 1000) / rate)) {
-    resultMessage.textContent = `Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA\n
-    Amount to send: GHS ${amountToSend.toFixed(2)}\n
-    Transaction fee: GHS ${transactionFee2.toFixed(2)}\n
-    Paying: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
+  else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && receiveAmount >= ((rate * 1000) / rate) && receiveAmount <= ((((rate * 1000) * 1000) / rate)/2)) {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA
+    Amount to send: GHS ${amountToSend.toFixed(2)}
+    Transaction fee: GHS ${transactionFee2.toFixed(2)}
+    Total: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 
   //(ALL COUNTRIES to GHANA) when amount to receive is entered
-  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && receiveAmount >= rate2 && receiveAmount <= ((rate2 * 5000000) / 1000)) {
-    resultMessage.textContent = `Amount to receive: GHS ${receiveAmount.toFixed(2)}\n
-    Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA\n
-    Transaction fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA\n
-    Paying: ${roundUp(Math.round((amountToSend + transactionFee2))).toLocaleString('fr-FR')} FCFA`;
+  else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && receiveAmount >= rate2 && receiveAmount <= ((rate2 * (1000000/2)) / 1000)) {
+    resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
+    Amount to receive: GHS ${receiveAmount.toFixed(2)}
+    Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA
+    Transaction fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA
+    Total: ${roundUp(Math.round((amountToSend + transactionFee2))).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
     resultMessage.className = "green_result";
-    proceedButton.style.display = "block";
+    copyButton.style.display = "block";
 
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
+    supportEl.style.display="none";
   }
 }
 
+document.getElementById("copyButton").addEventListener("click", function () {
+  const textArea = document.createElement("textarea");
+  textArea.value = document.getElementById("resultMessage").innerText;
 
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+});
 
 
+function contactSupport() {
+  const phoneNumber = "233535060144";
+  const message = "Hello. I intend to send an amount that exceeds your maximum limit";
 
-//Store form data
-let formData = {};
-function showrtformFollow() {
-  const mainFormContainer = document.getElementById("rtformMainKtn");
-  const followFormContainer = document.getElementById("rtformFollowKtn");
-
-  formData.senderCountry = document.getElementById("senderCountry").value;
-  formData.receiverCountry = document.getElementById("receiverCountry").value;
-  formData.sendAmount = document.getElementById("sendAmount").value;
-  formData.handleFee = document.getElementById("handleFee").value;
-
-  mainFormContainer.classList.add("fade-in", "secondary");
-  followFormContainer.classList.remove("secondary");
-}
-
-function goBack() {
-  const mainFormContainer = document.getElementById("rtformMainKtn");
-  const followFormContainer = document.getElementById("rtformFollowKtn");
-  mainFormContainer.classList.remove("secondary");
-  followFormContainer.classList.add("secondary");
-  // Restore entered data
-  document.getElementById("senderCountry").value = formData.senderCountry;
-  document.getElementById("receiverCountry").value = formData.receiverCountry;
-  document.getElementById("sendAmount").value = formData.sendAmount;
-  document.getElementById("handleFee").value = formData.handleFee;
-}
-
-
-// Validate the sender number
-function senderMomoNumber() {
-  senderCountry = document.getElementById("senderCountry").value;
-  receiverCountry = document.getElementById("receiverCountry").value;
-  senderNetwork = document.getElementById("senderNetwork").value;
-  senderMmNumber = document.getElementById("senderMmNumber").value;
-  const errorParagraph = document.getElementById("errorParagraph");
-  const phoneNumberInput = document.getElementById("senderMmNumber");
-  const inputValue = phoneNumberInput.value;
-  const numericValue = inputValue.replace(/\D/g, '');
-
-  //GHANA
-  if (senderCountry === "GHANA" && senderNetwork === "MTN") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["054", "024", "059", "053", "055"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid MTN number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  else if (senderCountry === "GHANA" && senderNetwork === "VODAFONE") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["050", "020"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Vodafone number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-  }
-
-  else if (senderCountry === "GHANA" && senderNetwork === "AIRTELTIGO") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["057", "027", "026", "056"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid AirtelTigo number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-  }
-
-  //TOGO
-  else if (senderCountry === "TOGO" && senderNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["99", "98", "97", "96", "79", "78"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Moov number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (senderCountry === "TOGO" && senderNetwork === "TOGOCEL") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["93", "92", "91", "90", "72", "71", "70"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Togocel number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  //IVORY COAST
-  else if (senderCountry === "IVORY COAST" && senderNetwork === "MOOV") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["01"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Moov number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  else if (senderCountry === "IVORY COAST" && senderNetwork === "ORANGE") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["07"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Orange number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  else if (senderCountry === "IVORY COAST" && senderNetwork === "MTN") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["05"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid MTN number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 10 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  //BURKINA FASO
-  else if (senderCountry === "BURKINA FASO" && senderNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["01", "02", "03", "51", "52", "53", "60", "61", "62", "63"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Moov number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-  }
-
-
-  else if (senderCountry === "BURKINA FASO" && senderNetwork === "ORANGE") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["05", "06", "07", "54", "55", "56", "57", "64", "65", "66", "77"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Orange number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  //BENIN
-  else if (senderCountry === "BENIN" && senderNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["95", "94", "98", "99", "60", "64", "68", "65"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid Moov number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (senderCountry === "BENIN" && senderNetwork === "MTN") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["96", "97", "91", "61", "62", "66", "67", "69", "52", "54", "55"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph.textContent = "";
-        return true;
-      } else {
-        errorParagraph.textContent = "Enter a valid MTN number";
-        errorParagraph.className = "red_error2";
-        errorParagraph.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph.textContent = "Number must be 8 digits.";
-      errorParagraph.className = "red_error2";
-      errorParagraph.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-}
-
-
-
-
-
-// Validate the sender number
-function receiverMomoNumber() {
-  senderCountry = document.getElementById("senderCountry").value;
-  receiverCountry = document.getElementById("receiverCountry").value;
-  receiverNetwork = document.getElementById("receiverNetwork").value;
-  receiverMmNumber = document.getElementById("receiverMmNumber").value;
-  const errorParagraph2 = document.getElementById("errorParagraph2");
-  const phoneNumberInput = document.getElementById("receiverMmNumber");
-
-  const inputValue = phoneNumberInput.value;
-  const numericValue = inputValue.replace(/\D/g, '');
-
-  //GHANA
-
-  if (receiverCountry === "GHANA" && receiverNetwork === "MTN") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["054", "024", "059", "053", "055"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid MTN number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  else if (receiverCountry === "GHANA" && receiverNetwork === "VODAFONE") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["050", "020"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Vodafone number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-  else if (receiverCountry === "GHANA" && receiverNetwork === "AIRTELTIGO") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["057", "027", "026", "056"];
-      const prefix = numericValue.slice(0, 3);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid AirtelTigo number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-  }
-
-
-  //TOGO
-  else if (receiverCountry === "TOGO" && receiverNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["99", "98", "97", "96", "79", "78"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Moov number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (receiverCountry === "TOGO" && receiverNetwork === "TOGOCEL") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["93", "92", "91", "90", "72", "71", "70"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Togocel number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  //IVORY COAST
-  else if (receiverCountry === "IVORY COAST" && receiverNetwork === "MOOV") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["01"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Moov number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (receiverCountry === "IVORY COAST" && receiverNetwork === "ORANGE") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["07"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Orange number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (receiverCountry === "IVORY COAST" && receiverNetwork === "MTN") {
-
-    if (numericValue.length > 10) {
-      phoneNumberInput.value = numericValue.slice(0, 10);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 10) {
-      const validPrefixes = ["05"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid MTN number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 10 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  //BURKINA FASO
-  else if (receiverCountry === "BURKINA FASO" && receiverNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["01", "02", "03", "51", "52", "53", "60", "61", "62", "63"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Moov number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (receiverCountry === "BURKINA FASO" && receiverNetwork === "ORANGE") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["05", "06", "07", "54", "55", "56", "57", "64", "65", "66", "77"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Orange number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  //BENIN
-  else if (receiverCountry === "BENIN" && receiverNetwork === "MOOV") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["95", "94", "98", "99", "60", "64", "68", "65"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid Moov number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-
-  }
-
-
-  else if (receiverCountry === "BENIN" && receiverNetwork === "MTN") {
-
-    if (numericValue.length > 8) {
-      phoneNumberInput.value = numericValue.slice(0, 8);
-    } else {
-      phoneNumberInput.value = numericValue;
-    }
-
-    if (numericValue.length === 8) {
-      const validPrefixes = ["96", "97", "91", "61", "62", "66", "67", "69", "52", "54", "55"];
-      const prefix = numericValue.slice(0, 2);
-
-      if (validPrefixes.includes(prefix)) {
-        errorParagraph2.textContent = "";
-        return true;
-      } else {
-        errorParagraph2.textContent = "Enter a valid MTN number";
-        errorParagraph2.className = "red_error2";
-        errorParagraph2.style.textAlign = "center";
-        return false;
-      }
-    } else if (numericValue.length > 0) {
-      errorParagraph2.textContent = "Number must be 8 digits.";
-      errorParagraph2.className = "red_error2";
-      errorParagraph2.style.textAlign = "center";
-      return false;
-    }
-  }
-
-}
-
-
-
-
-
-
-//Confirmation of Transaction details
-function transactionDetailsToShow(event) {
-  event.preventDefault();
-  senderCountry = document.getElementById("senderCountry").value;
-  receiverCountry = document.getElementById("receiverCountry").value;
-  sendAmountInput = document.getElementById("sendAmount");
-  sendAmount = parseFloat(sendAmountInput.value);
-  receiveAmountInput = document.getElementById("receiveAmount");
-  receiveAmount = parseFloat(receiveAmountInput.value);
-  senderNetwork = document.getElementById("senderNetwork").value;
-  senderMmNumber = document.getElementById("senderMmNumber").value;
-  receiverNetwork = document.getElementById("receiverNetwork").value;
-  receiverMmNumber = document.getElementById("receiverMmNumber").value;
-  transactionFee = calculateTransactionFee();
-  transactionFee2 = calculateTransactionFee2();
-  messageError2 = document.getElementById("errorMessage2");
-  amountToSend = calculateAmountToSend();
-
-
-  messageError2.textContent = "";
-  messageError2.className = "";
-
-  const isValidsenderNumber = senderMomoNumber();
-  const isValidreceiverNumber = receiverMomoNumber();
-  let totaLamount = sendAmount + transactionFee;
-  let transactionDetails = `Hello`;
-  let messageOutput = document.getElementById("messageOutput");
-  let encodedMessage = encodeURIComponent(transactionDetails);
-  let URL = "display.html" + "?text=" + encodedMessage;
-
-
-  if (!senderNetwork || !senderMmNumber || !receiverNetwork || !receiverMmNumber) {
-    messageError2.textContent = "Please complete all required fields";
-    messageError2.className = "red_error";
-    messageError2.style.display = "block";
-    return;
-  }
-
-
-if (senderCountry === "GHANA" && handleFee === "ADD FEE" && isValidsenderNumber && isValidreceiverNumber) {
+  const WhatsAppLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;"> ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA</span><br>
-<b>Amount to Send:</b> GHS ${sendAmount.toFixed(2)}<br>
-<b>Fee:</b> GHS ${transactionFee.toFixed(2)}<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">GHS ${totaLamount.toFixed(2)}</span>`;
-
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-
+  window.open(WhatsAppLink, '_blank');
 }
-
-  else if (senderCountry === "GHANA" && handleFee === "SUBSTRACT FEE" && isValidsenderNumber && isValidreceiverNumber) {
-
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;"> ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA</span><br>
-<b>Amount to Send:</b> GHS ${(sendAmount - transactionFee).toFixed(2)}<br>
-<b>Fee:</b> GHS ${transactionFee.toFixed(2)}<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">GHS ${sendAmount.toFixed(2)}</span>`;
-    
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-  }
-
-  else if (senderCountry !== "GHANA" && handleFee === "ADD FEE" && isValidsenderNumber && isValidreceiverNumber) {
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;">GHS ${amountToReceive.toFixed(2)}</span><br>
-<b>Amount to Send:</b> ${sendAmount.toLocaleString('fr-FR')} FCFA<br>
-<b>Fee:</b> ${transactionFee.toLocaleString('fr-FR')} FCFA<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">${Math.round(totaLamount).toLocaleString('fr-FR')} FCFA</span>`;
-
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-  }
-
-  else if (senderCountry !== "GHANA" && handleFee === "SUBSTRACT FEE" && isValidsenderNumber && isValidreceiverNumber) {
-
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;">GHS ${amountToReceive.toFixed(2)}</span><br>
-<b>Amount to Send:</b> ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA<br>
-<b>Fee:</b> ${transactionFee.toLocaleString('fr-FR')} FCFA<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA</span>`;
-
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-  }
-
-
-//When Amount to receive is entered -----------------------------------------------------------------------------
-
-  if (senderCountry === "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
-
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;"> ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA</span><br>
-<b>Amount to Send:</b> GHS ${amountToSend.toFixed(2)}<br>
-<b>Fee:</b> GHS ${transactionFee2.toFixed(2)}<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">GHS ${(amountToSend + transactionFee2).toFixed(2)}</span>`;
-
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-  } 
-
-  else if (senderCountry !== "GHANA" && receiveAmount && isValidsenderNumber && isValidreceiverNumber) {
-  totaLamount = amountToSend + transactionFee2;
-
-transactionDetails = `<b style="color: #076c5e; font-weight: bold; font-style: italic;">TXN: ${senderCountry} to ${receiverCountry}</b><br>
-<b>Sender:</b> ${senderMmNumber} (${senderNetwork})<br>
-<b>Receiver:</b> ${receiverMmNumber} (${receiverNetwork})<br>
-<b>Amount to receive:</b> <span style="color: red; font-weight: bold;">GHS ${receiveAmount.toFixed(2)}</span><br>
-<b>Amount to Send:</b> ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA<br>
-<b>Fee:</b> ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA<br>
-<b>Total Amount:</b> <span style="color: green; font-weight: bold;">${roundUp(Math.round(totaLamount)).toLocaleString('fr-FR')} FCFA</span>`;
-
-    messageOutput = document.getElementById("messageOutput");
-    encodedMessage = encodeURIComponent(transactionDetails);
-    URL = "display.html" + "?text=" + encodedMessage;
-    messageOutput.textContent = transactionDetails;
-    transactionDetails = document.getElementById("messageOutput").innerHTML;
-    window.location.href = URL;
-  } 
-}
-  
-  

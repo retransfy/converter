@@ -9,78 +9,35 @@ body {
   height: 100vh;
 }
 
-
-
 .logo {
   width: 150px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.logoKont {
+ .logoKont {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
-.logoKont h4:first-child {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-right: 5px;
+.MT{
+  margin-top: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.logoKont h4:last-child {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-left: 5px;
-}
-
-.logoKont a {
-  text-decoration: none;
-  color: #000000;
-}
-
-.logoKont a:hover {
-  text-decoration: none;
-  color: #6e0303;
-}
-
-.langSelectEn {
-  background-color: #b8fcd29f;
+.flags {
+  width: 147px;
   display: flex;
   align-items: center;
-  height: 30px;
-  margin-right: 20px;
+  justify-content: space-between;
 }
 
-.langSelectFr {
-  background-color: #b8fcd29f;
-  display: flex;
-  align-items: center;
-  height: 30px;
-  margin-right: 20px;
-}
-
-.English {
-  width: 30px;
-  padding-right: 5px;
-}
-
-.English:hover {
-  cursor: pointer;
-  opacity: .7;
-}
-
-.French {
-  width: 30px;
-  padding-left: 5px;
-
-}
-
-.French:hover {
-  cursor: pointer;
-  opacity: .7;
+.flags img {
+  width: 20px;
 }
 
 .rtformKtn {
-  background-color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 228, 196, 0.92), rgba(240, 248, 255, 0.92));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,23 +49,6 @@ body {
   height: auto;
 }
 
-.secondary {
-  display: none;
-}
-
-.fade-in {
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
 
 label {
   margin-top: 15px;
@@ -122,7 +62,7 @@ label {
 input {
   border: none;
   margin-top: 2px;
-  padding: 15px;
+  padding: 14px;
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   border-radius: 10px;
@@ -147,21 +87,6 @@ select {
   background-color: azure;
 }
 
-
-option:first-child {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.301);
-}
-
-option:first-child:focus {
-  background-color: white;
-  outline: none;
-}
-
-option:first-child:hover {
-  background-color: white;
-}
-
 #switchAmount {
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
@@ -182,7 +107,7 @@ option:first-child:hover {
   border: none;
   cursor: pointer;
   padding: 5px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 
@@ -219,19 +144,6 @@ option:first-child:hover {
   margin: none;
 }
 
-.red_error2 {
-  color: red;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 12px;
-  text-align: center;
-  padding: none;
-  margin: none;
-}
-
-#errorParagraph, #errorParagraph2 {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
 
 #sendAmountField, #senderField, #receiverField, #receiveAmountField, #handleField {
   margin-top: 1px;
@@ -241,7 +153,7 @@ option:first-child:hover {
 .green_result {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 10px;
+  line-height: 20px;
   text-align: center;
   background-color: white;
   display: flex;
@@ -256,7 +168,7 @@ option:first-child:hover {
 
 }
 
-#proceedButton {
+#copyButton {
   display: none;
   margin-top: 10px;
   background-color: rgb(0, 109, 172);
@@ -276,19 +188,18 @@ option:first-child:hover {
   color: rgb(0, 0, 0);
   box-shadow: 2px 2px 4px rgb(73, 73, 73, 0.3);
 }
-
-#shareButton {
-  display: block;
-  margin-top: 10px;
-  background-color: rgb(0, 109, 172);
-  padding: 10px;
-  border-style: none;
-  color: white;
-  font-size: medium;
-  box-shadow: 2px 2px 4px rgb(73, 73, 73, 0.3);
-}
-
 .receiverHidden {
   display: none;
 }
 
+#support {
+  background-color: rgb(0, 65, 102);
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgb(73, 73, 73, 0.3);
+}

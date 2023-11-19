@@ -13,21 +13,22 @@
 
   <body>
     <div class="rtformKtn" id="rtformMainKtn">
-      <img src="media/Logo.png" alt="Logo" class="logo" />
       <div class="logoKont">
-        <div class="langSelectEn">
-          <a href="index.html"><h4>English</h4></a>
-          <a href="index.html"><img src="media/uk.jpg" alt="English Language" class="English" /></a>
+        <img src="media/Logo.png" alt="Logo" class="logo" />
+        <div class="flags">
+          <img src="media/1200px-Flag_of_Ghana.svg.png" alt="Ghana Flag" />
+          <img src="media/flag-800.png" alt="Togo Flag" />
+          <img src="media/Flag-of-Benin.jpg" alt="Benin Flag" />
+          <img src="media/Flag_of_Côte_d'Ivoire.svg.png" alt="Ivory Coast Flag" />
+          <img src="media/flag-of-burkina-faso.jpg" alt="Burkina Faso Flag" />
+          <img src="media/download.png" alt="Senegal Flag" />
         </div>
-        <a href="indexfrench.html"><img src="media/france.jpg" alt="French Language" class="French" /></a>
-        <a href="indexfrench.html"><h4>Français</h4></a>
       </div>
 
       <form onsubmit="rtConvertAndDisplayRt(event);" id="rtformMain">
         <label for="senderCountry">Sender's country:</label>
         <p id="senderField"></p>
         <select id="senderCountry" name="senderCountry" onchange="onSenderCountryChange()">
-          <!-- <option value="">Select a country</option> -->
           <option value="GHANA">Ghana</option>
           <option value="TOGO">Togo</option>
           <option value="BENIN">Benin</option>
@@ -38,7 +39,6 @@
         <label for="receiverCountry">Receiver's country:</label>
         <p id="receiverField"></p>
         <select id="receiverCountry" name="receiverCountry" onchange="onReceiverCountryChange()">
-          <!-- <option value="">Select a country</option> -->
           <option value="TOGO">Togo</option>
           <option value="BENIN">Benin</option>
           <option value="IVORY COAST">Ivory Coast</option>
@@ -62,7 +62,6 @@
         <label for="handleFee">Handle the fees</label>
         <p id="handleField"></p>
         <select id="handleFee" name="handleFee">
-          <option value="">Select</option>
           <option value="ADD FEE">Add transaction fee</option>
           <option value="SUBSTRACT FEE">Substract transaction fee</option>
         </select>
@@ -73,54 +72,9 @@
       <p id="errorMessage"></p>
 
       <p id="resultMessage"></p>
+      <button id="support" onclick="contactSupport()" style="display: none">Contact Support</button>
 
-      <button type="button" id="proceedButton" onclick="showrtformFollow()">Proceed to send</button>
-    </div>
-
-    <div class="rtformKtn secondary" id="rtformFollowKtn">
-      <div>
-        <img src="media/Logo.png" alt="Logo" class="logo" />
-      </div>
-      <form id="rtformFollow" onsubmit="transactionDetailsToShow(event)">
-        <label for="senderNetwork">Your network:</label>
-        <select id="senderNetwork" name="senderNetwork">
-          <!-- <option value="N/A">Select</option> -->
-          <option value="MTN">Mtn</option>
-          <option value="VODAFONE">Vodafone</option>
-          <option value="AIRTELTIGO">AirtelTigo</option>
-        </select>
-
-        <label for="senderMmNumber">Your Momo number:</label>
-        <p id="errorParagraph" class="error"></p>
-        <input
-          type="tel"
-          id="senderMmNumber"
-          name="senderMmNumber"
-          placeholder="Your Momo number"
-          oninput="senderMomoNumber()"
-        />
-
-        <label for="receiverNetwork">Receiver's network:</label>
-        <select id="receiverNetwork" name="receiverNetwork">
-          <!-- <option value="N/A">Select</option> -->
-          <option value="MOOV">Moov</option>
-          <option value="TOGOCEL">Togocel</option>
-        </select>
-
-        <label for="receiverMmNumber">Receiver's Momo number:</label>
-        <p id="errorParagraph2" class="error"></p>
-        <input
-          type="tel"
-          id="receiverMmNumber"
-          name="receiverMmNumber"
-          placeholder="Receiver's Momo number"
-          oninput="receiverMomoNumber()"
-        />
-        <button type="submit" id="shareButton">Continue</button>
-      </form>
-      <p id="errorMessage2"></p>
-      <p id="messageOutput" style="display: none"></p>
-      <button type="button" id="thegoBack" onclick="goBack()">Back</button>
+      <button type="button" id="copyButton" onclick="showrtformFollow()">Copy</button>
     </div>
 
     <script src="index.js"></script>
