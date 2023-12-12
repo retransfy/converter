@@ -145,8 +145,8 @@ function calculateTransactionFee() {
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA") {
     if (sendAmount < 1000) { transactionFee = 0; }
     else if (sendAmount >= 1000 && sendAmount <= 6000) { transactionFee = 500; }
-    else if (sendAmount >= 6001 && sendAmount <= 21000) { transactionFee = 1000; }
-    else if (sendAmount >= 21001 && sendAmount <= 40000) { transactionFee = 2000; }
+    else if (sendAmount >= 6001 && sendAmount <= 20000) { transactionFee = 1000; }
+    else if (sendAmount >= 20001 && sendAmount <= 40000) { transactionFee = 2000; }
     else if (sendAmount >= 40001 && sendAmount <= 60000) { transactionFee = 3000; }
     else if (sendAmount >= 60001 && sendAmount <= 100000) { transactionFee = 4000; }
     else if (sendAmount >= 100001 && sendAmount <= 200000) { transactionFee = 5000; }
