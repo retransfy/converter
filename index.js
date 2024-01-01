@@ -498,8 +498,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "SUBSTRACT FEE") {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA
-    Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}
-    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Sending: GHS ${(sendAmount - (transactionFee / 2)).toFixed(2)}
+    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
     Paying: GHS ${sendAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -519,8 +519,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= (1000000/2) && handleFee === "SUBSTRACT FEE") {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: GHS ${amountToReceive.toFixed(2)}
-    Sending: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
-    Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA
+    Sending: ${Math.round(sendAmount - (transactionFee/2)).toLocaleString('fr-FR')} FCFA
+    Fee: ${(transactionFee).toLocaleString('fr-FR') / 2} FCFA (50% OFF)
     Total: ${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -586,7 +586,7 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: GHS ${receiveAmount.toFixed(2)}
     Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA
-    Transaction fee: ${Math.round(transactionFee2).toLocaleString('fr-FR') / 2} FCFA
+    Fee: ${Math.round(transactionFee2).toLocaleString('fr-FR') / 2} FCFA (50% OFF)
     Total: ${roundUp(Math.round((amountToSend + (transactionFee2 / 2 )))).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
