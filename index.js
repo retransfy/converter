@@ -414,7 +414,7 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
     Sending: GHS ${sendAmount.toFixed(2)}
-    Transaction fee: GHS ${transactionFee.toFixed(2)}
+    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
     Total: GHS ${totalAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
