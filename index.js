@@ -227,9 +227,9 @@ function calculateAmountToReceive() {
   } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && handleFee === "ADD FEE") {
     amountToReceive = ((sendAmount / 1000) * rate2);
   } else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && handleFee === "SUBSTRACT FEE") {
-    amountToReceive = (((sendAmount - (transactionFee/2)) / rate) * 1000);
+    amountToReceive = (((sendAmount - transactionFee) / rate) * 1000);
   } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && handleFee === "SUBSTRACT FEE") {
-    amountToReceive = (((sendAmount - (transactionFee/2)) / 1000) * rate2);
+    amountToReceive = (((sendAmount - transactionFee) / 1000) * rate2);
   }
   return amountToReceive;
 }
@@ -407,14 +407,14 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
 // RESULTS FOR VALID ENTRIES
   resultMessage.textContent = ""; 
   resultMessage.style.display = "none";
-  let totalAmount = sendAmount + (transactionFee / 2);
+  let totalAmount = sendAmount + transactionFee;
   
   //(GHANA to TOGO) / ADDFee
   if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "ADD FEE" && true) {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
     Sending: GHS ${sendAmount.toFixed(2)}
-    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
     Total: GHS ${totalAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -435,7 +435,7 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
     Sending: GHS ${sendAmount.toFixed(2)}
-    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
     Total: GHS ${totalAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -457,7 +457,7 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: GHS ${amountToReceive.toFixed(2)}
     Sending: ${sendAmount.toLocaleString('fr-FR')} FCFA
-    Fee: ${transactionFee.toLocaleString('fr-FR') / 2} FCFA (50% OFF)
+    Transaction fee: ${transactionFee.toLocaleString('fr-FR')} FCFA
     Total: ${Math.round(totalAmount).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -477,8 +477,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   else if (senderCountry === "GHANA" && receiverCountry === "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "SUBSTRACT FEE") {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toLocaleString('fr-FR')} FCFA
-    Sending: GHS ${(sendAmount - (transactionFee / 2)).toFixed(2)}
-    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
+    Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
     Total: GHS ${sendAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -498,8 +498,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO" && sendAmount >= rate && sendAmount <= ((rate * 1000)/2) && handleFee === "SUBSTRACT FEE") {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(Math.round(amountToReceive)).toFixed(0)} FCFA
-    Sending: GHS ${(sendAmount - (transactionFee / 2)).toFixed(2)}
-    Fee: GHS ${transactionFee.toFixed(2)/2} (50% OFF)
+    Sending: GHS ${(sendAmount - transactionFee).toFixed(2)}
+    Transaction fee: GHS ${transactionFee.toFixed(2)}
     Paying: GHS ${sendAmount.toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -519,8 +519,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount >= 1000 && sendAmount <= (1000000/2) && handleFee === "SUBSTRACT FEE") {
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: GHS ${amountToReceive.toFixed(2)}
-    Sending: ${Math.round(sendAmount - (transactionFee/2)).toLocaleString('fr-FR')} FCFA
-    Fee: ${(transactionFee).toLocaleString('fr-FR') / 2} FCFA (50% OFF)
+    Sending: ${Math.round(sendAmount - transactionFee).toLocaleString('fr-FR')} FCFA
+    Transaction fee: ${(transactionFee).toLocaleString('fr-FR')} FCFA
     Total: ${Math.round(sendAmount).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
@@ -543,8 +543,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA
     Amount to send: GHS ${amountToSend.toFixed(2)}
-    Fee: GHS ${transactionFee2.toFixed(2) / 2} (50% OFF)
-    Total: GHS ${(amountToSend + (transactionFee2 / 2)).toFixed(2)}`;
+    Transaction fee: GHS ${transactionFee2.toFixed(2)}
+    Total: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
@@ -564,8 +564,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: ${roundDown(receiveAmount).toLocaleString('fr-FR')} FCFA
     Amount to send: GHS ${amountToSend.toFixed(2)}
-    Fee: GHS ${transactionFee2.toFixed(2) / 2} (50% OFF)
-    Total: GHS ${(amountToSend + (transactionFee2 / 2)).toFixed(2)}`;
+    Transaction fee: GHS ${transactionFee2.toFixed(2)}
+    Total: GHS ${(amountToSend + transactionFee2).toFixed(2)}`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
@@ -586,8 +586,8 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
     resultMessage.innerHTML = `${senderCountry} to ${receiverCountry}
     Amount to receive: GHS ${receiveAmount.toFixed(2)}
     Amount to send: ${roundUp(Math.round(amountToSend)).toLocaleString('fr-FR')} FCFA
-    Fee: ${Math.round(transactionFee2).toLocaleString('fr-FR') / 2} FCFA (50% OFF)
-    Total: ${roundUp(Math.round((amountToSend + (transactionFee2 / 2 )))).toLocaleString('fr-FR')} FCFA`;
+    Transaction fee: ${Math.round(transactionFee2).toLocaleString('fr-FR')} FCFA
+    Total: ${roundUp(Math.round((amountToSend + transactionFee2))).toLocaleString('fr-FR')} FCFA`;
 
     resultMessage.style.whiteSpace = "pre-line";
     resultMessage.style.display = "block";
