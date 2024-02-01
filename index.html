@@ -35,6 +35,7 @@
           <option value="BENIN">Benin</option>
           <option value="IVORY COAST">Ivory Coast</option>
           <option value="BURKINA FASO">Burkina Faso</option>
+          <option value="SENEGAL">Senegal</option>
         </select>
 
         <label for="receiverCountry">Receiver's country:</label>
@@ -44,6 +45,7 @@
           <option value="BENIN">Benin</option>
           <option value="IVORY COAST">Ivory Coast</option>
           <option value="BURKINA FASO">Burkina Faso</option>
+          <option value="SENEGAL">Senegal</option>
           <option value="GHANA">Ghana</option>
         </select>
         <div id="senderDiv">
@@ -66,8 +68,20 @@
           <option value="ADD FEE">Add transaction fee</option>
           <option value="SUBSTRACT FEE">Substract transaction fee</option>
         </select>
+        <div class="checkfee">
+          <input type="checkbox" id="Wfee" name="Wfee" onchange="checkWithrawalFee()" />
+          <h4>Add withdrawal fee</h4>
+        </div>
 
         <button type="submit" class="submitbutton">Convert</button>
+      </form>
+
+      <p id="errorMessage"></p>
+
+      <p id="resultMessage"></p>
+      <button id="support" onclick="contactSupport()" style="display: none">Contact Support</button>
+
+      <button type="button" id="copyButton" onclick="showrtformFollow()">Copy</button>
       </form>
 
       <p id="errorMessage"></p>
