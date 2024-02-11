@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retransfy</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="rate.css" />
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="rtformKtn" id="rtformMainKtn">
+        <div class="logoKont">
+          <img src="media/Logo.png" alt="Logo" class="logo" id="logo" />
+          <div class="flags">
+            <img src="media/1200px-Flag_of_Ghana.svg.png" alt="Ghana Flag" />
+            <img src="media/flag-800.png" alt="Togo Flag" />
+            <img src="media/Flag-of-Benin.jpg" alt="Benin Flag" />
+            <img src="media/Flag_of_Côte_d'Ivoire.svg.png" alt="Ivory Coast Flag" />
+            <img src="media/flag-of-burkina-faso.jpg" alt="Burkina Faso Flag" />
+            <img src="media/download.png" alt="Senegal Flag" />
+          </div>
+      <form action="" onsubmit="calculateRate(event)">
+        <select name="currency" id="currency">
+          <option value="FCFA">TO FCFA</option>
+          <option value="GHS">TO GHS</option>
+        </select>
+        <input type="text" id="buyBN" name="buyBN" />
+        <input type="text" id="sellBN" name="sellBN" />
+        <input type="text" id="amount" name="amount" placeholder="Amount" />
+        <input type="text" id="paying" name="paying" placeholder="Paying" />
+        <p id="showrate" style="display: none"></p>
+        <p id="pnl" style="display: none"></p>
+        <button type="submit">Calculate</button>
+      </form>
+    </div>
+    <script src="rate.js"></script>
+  </body>
+</html>
