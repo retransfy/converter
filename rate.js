@@ -26,7 +26,7 @@ pnlEl = Math.round(amountToReceiveEl - paying);
 other = Math.round(pnlEl / 1000 * rateEl);
 
 rate.style.display = "block";
-rate.textContent = `${rateEl.toFixed(2)} | ${amountToReceiveEl.toLocaleString('fr-FR')} FCFA`;
+rate.textContent = `${rateEl.toFixed(5)} | ${amountToReceiveEl.toLocaleString('fr-FR')} FCFA`;
 
 pnl.style.display = "block";
 pnl.textContent = `${pnlEl.toLocaleString('fr-FR')} FCFA | ${other.toFixed(2)} GHS`;
@@ -39,7 +39,7 @@ pnlEl = amountToReceiveEl - paying;
 other = Math.round(pnlEl * 1000 / rateEl);
 
 rate.style.display = "block";
-rate.textContent = `${rateEl.toFixed(2)} | ${amountToReceiveEl.toFixed(2)} GHS`;
+rate.textContent = `${rateEl.toFixed(5)} | ${amountToReceiveEl.toFixed(2)} GHS`;
 
 pnl.style.display = "block"
 pnl.textContent = `${pnlEl.toFixed(2)} GHS | ${other.toLocaleString('fr-FR')} FCFA`;
