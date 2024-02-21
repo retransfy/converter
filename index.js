@@ -57,6 +57,7 @@ const receiverDiv = document.getElementById("receiverDiv");
 const handler = document.getElementById("handleFee");
 const checkFeeDiv = document.getElementById("checkfee");
 copyButton.style.display = "none";
+copierButton.style.display = "none";
 supportEl.style.display="none";
 clearWithdrawalError();
 
@@ -362,6 +363,7 @@ if (sendAmountInput.value === "" && receiveAmountInput.value === "") {
   messageError.style.display = "block";
   supportEl.style.display="none";
   copyButton.style.display = "none";
+  copierButton.style.display = "none";
   clearWithdrawalError();
   
 } 
@@ -376,6 +378,7 @@ if (receiveAmountInput.value === "" && sendAmountInput.value === "") {
   messageError.style.display = "block";
   supportEl.style.display="none";
   copyButton.style.display = "none";
+  copierButton.style.display = "none";
   clearWithdrawalError();
 } 
 else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
@@ -396,6 +399,7 @@ else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
     clearWithdrawalError();
 
   } else if (senderCountry !== "GHANA" && receiverCountry !== "GHANA") {
@@ -408,6 +412,7 @@ else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
     clearWithdrawalError();
   }
 
@@ -423,6 +428,7 @@ else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
     clearWithdrawalError();
   }
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount < 1000) {
@@ -435,6 +441,7 @@ else if (receiveAmountInput.value !== "" && sendAmountInput.value === ""){
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
     clearWithdrawalError();
   }
 // Minimum amount error for amount to receive
@@ -448,6 +455,7 @@ if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && r
   resultMessage.className = "";
   resultMessage.style.display = "none";
   copyButton.style.display = "none";
+  copierButton.style.display = "none";
   clearWithdrawalError();
 
 }
@@ -461,6 +469,7 @@ else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount
   resultMessage.className = "";
   resultMessage.style.display = "none";
   copyButton.style.display = "none";
+  copierButton.style.display = "none";
   clearWithdrawalError();
 
 }
@@ -478,6 +487,7 @@ else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
 
   } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && sendAmount > maxCfaToCedis) {
     messageError.textContent = `The maximum to send from ${senderCountry} to GHANA to without transaction fee is ${Math.round(maxCfaToCedis).toLocaleString("fr-FR")} FCFA.
@@ -490,6 +500,7 @@ else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
   }
 //Maximum amount error for amount to receive.
   if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && !sendAmount && receiveAmount > maxCedisToCfa) {
@@ -503,6 +514,7 @@ else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
   }
 
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount && receiveAmount > maxForGhs) {
@@ -515,6 +527,7 @@ else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && !sendAmount
     resultMessage.className = "";
     resultMessage.style.display = "none";
     copyButton.style.display = "none";
+    copierButton.style.display = "none";
 }
 
 
@@ -597,6 +610,9 @@ resultMessage.style.whiteSpace = "pre-line";
     copyButton.style.display = "block";
     copyButton.textContent = "Copy";
     copyButton.style.backgroundColor = "#006dac";
+    copierButton.style.display = "block";
+    copierButton.textContent = "Copier";
+    copierButton.style.backgroundColor = "#ac1400";
     messageError.textContent = "";
     messageError.className = "";
     messageError.style.display = "none";
@@ -677,6 +693,67 @@ document.getElementById("copyButton").addEventListener("click", function () {
   // Change copy button text and style
   document.getElementById("copyButton").textContent = "Copied";
   document.getElementById("copyButton").style.backgroundColor = "gray";
+});
+
+
+
+
+document.getElementById("copierButton").addEventListener("click", function () {
+  const textArea = document.createElement("textarea");
+  const resultMessage = document.getElementById("resultMessage").innerText;
+
+  const translations = {
+    "Rate": "Taux",
+    "Amount to send": "Montant à envoyer",
+    "Transaction fee": "Frais de transaction",
+    "Amount to receive": "Montant à recevoir",
+    "Total to Pay": "Total à Payer"
+  };
+
+  if (resultMessage.includes("Amount to receive") || resultMessage.includes("Total to Pay")) {
+      // Split the result message by newline characters
+      const paragraphs = resultMessage.split("\n");
+
+      // Iterate over each paragraph
+      const copiedMessage = paragraphs.map((paragraph, index) => {
+          // Add asterisks around "Amount to receive" paragraph
+          if (paragraph.includes("Amount to receive") || paragraph.includes("Total to Pay")) {
+              return `*${paragraph}*`;
+          }
+          return paragraph;
+      }).join("\n"); // Join the paragraphs back together
+
+      // Replace English phrases with French translations
+      let translatedMessage = copiedMessage;
+      Object.keys(translations).forEach(englishPhrase => {
+        const frenchPhrase = translations[englishPhrase];
+        translatedMessage = translatedMessage.replace(englishPhrase, frenchPhrase);
+      });
+
+      // Set the modified message to the text area
+      textArea.value = translatedMessage;
+  } else {
+      // Replace English phrases with French translations
+      let translatedMessage = resultMessage;
+      Object.keys(translations).forEach(englishPhrase => {
+        const frenchPhrase = translations[englishPhrase];
+        translatedMessage = translatedMessage.replace(englishPhrase, frenchPhrase);
+      });
+
+      textArea.value = translatedMessage;
+  }
+
+  // Append text area to the document body for copying
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+
+  // Remove the text area from the document body
+  document.body.removeChild(textArea);
+
+  // Change copy button text and style
+  document.getElementById("copierButton").textContent = "Copié";
+  document.getElementById("copierButton").style.backgroundColor = "gray";
 });
 
 
