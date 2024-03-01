@@ -4,7 +4,7 @@ document.getElementById("logo").addEventListener("dblclick", function(){
 })
 
 
-let rate = 20.4;
+let rate = 20.2;
 let rate2 = rate - 1;
 let senderCountry = document.getElementById("senderCountry").value;
 let receiverCountry = document.getElementById("receiverCountry").value;
@@ -15,8 +15,8 @@ let sendAmount = parseFloat(sendAmountInput.value);
 let receiveAmount = parseFloat(receiveAmountInput.value);
 let withdrawalFee = 0;
 let maxForFcfa = (((rate * 1000)/2)+(rate*5));
-let maxCfaToCedis = ((10010/rate2)*1000);
 let maxForGhs = 10010;
+let maxCfaToCedis = ((10010/rate2)*1000);
 let maxCedisToCfa = (((10000 * 1000) / rate)+5000);
 const supportEl = document.getElementById("support");
 const wFee = document.getElementById("Wfee");
@@ -151,10 +151,10 @@ function calculateTransactionFee() {
     else if (sendAmount >= 151 && sendAmount <= 500) { transactionFee = 10; }
     else if (sendAmount >= 501 && sendAmount <= 800) { transactionFee = 15; }
     else if (sendAmount >= 801 && sendAmount <= 1200) { transactionFee = 20; }
-    else if (sendAmount >= 1201 && sendAmount <= 2000) { transactionFee = 25; }
-    else if (sendAmount >= 2001 && sendAmount <= 5000) { transactionFee = 40; }
-    else if (sendAmount >= 5001 && sendAmount <= 8000) { transactionFee = 70; }
-    else if (sendAmount >= 8001 && sendAmount <= maxForFcfa) { transactionFee = 95; }
+    else if (sendAmount >= 1201 && sendAmount <= 3000) { transactionFee = 25; }
+    else if (sendAmount >= 3001 && sendAmount <= 5000) { transactionFee = 40; }
+    else if (sendAmount >= 5001 && sendAmount <= 8000) { transactionFee = 60; }
+    else if (sendAmount >= 8001 && sendAmount <= maxForFcfa) { transactionFee = 80; }
   }
 //(GHANA to BCB)
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO") {
@@ -162,10 +162,10 @@ function calculateTransactionFee() {
     else if (sendAmount >= 151 && sendAmount <= 500) { transactionFee = 15; }
     else if (sendAmount >= 501 && sendAmount <= 800) { transactionFee = 20; }
     else if (sendAmount >= 801 && sendAmount <= 1200) { transactionFee = 25; }
-    else if (sendAmount >= 1201 && sendAmount <= 2000) { transactionFee = 40; }
-    else if (sendAmount >= 2001 && sendAmount <= 5000) { transactionFee = 50; }
+    else if (sendAmount >= 1201 && sendAmount <= 3000) { transactionFee = 40; }
+    else if (sendAmount >= 3001 && sendAmount <= 5000) { transactionFee = 50; }
     else if (sendAmount >= 5001 && sendAmount <= 8000) { transactionFee = 80; }
-    else if (sendAmount >= 8001 && sendAmount <= maxForFcfa) { transactionFee = 120; }}
+    else if (sendAmount >= 8001 && sendAmount <= maxForFcfa) { transactionFee = 100; }}
 //(ALL COUNTRIES to GHANA)
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA") {
     if (sendAmount < 1000) { transactionFee = 0; }
@@ -174,9 +174,9 @@ function calculateTransactionFee() {
     else if (sendAmount >= 20001 && sendAmount <= 40000) { transactionFee = 2000; }
     else if (sendAmount >= 40001 && sendAmount <= 60000) { transactionFee = 3000; }
     else if (sendAmount >= 60001 && sendAmount <= 100000) { transactionFee = 4000; }
-    else if (sendAmount >= 100001 && sendAmount <= 200000) { transactionFee = 5000; }
-    else if (sendAmount >= 200001 && sendAmount <= 400000) { transactionFee = 8000; }
-    else if (sendAmount >= 400001 && sendAmount <= 505000) { transactionFee = 10000; }}
+    else if (sendAmount >= 100001 && sendAmount <= 300000) { transactionFee = 5000; }
+    else if (sendAmount >= 300001 && sendAmount <= 400000) { transactionFee = 7000; }
+    else if (sendAmount >= 400001 && sendAmount <= 505000) { transactionFee = 8000; }}
 
   return transactionFee;
 }
@@ -192,10 +192,10 @@ function calculateTransactionFee2() {
     else if (receiveAmount >= ((151 * 1000) / rate) && receiveAmount <= ((500 * 1000) / rate)) { transactionFee2 = 10; }
     else if (receiveAmount >= ((501 * 1000) / rate) && receiveAmount <= ((800 * 1000) / rate)) { transactionFee2 = 15; }
     else if (receiveAmount >= ((801 * 1000) / rate) && receiveAmount <= ((1200 * 1000) / rate)) { transactionFee2 = 20; }
-    else if (receiveAmount >= ((1201 * 1000) / rate) && receiveAmount <= ((2000 * 1000) / rate)) { transactionFee2 = 25; }
-    else if (receiveAmount >= ((2001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 40; }
-    else if (receiveAmount >= ((5001 * 1000) / rate) && receiveAmount <= ((8000 * 1000) / rate)) { transactionFee2 = 70; }
-    else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= maxCedisToCfa) { transactionFee2 = 95; }
+    else if (receiveAmount >= ((1201 * 1000) / rate) && receiveAmount <= ((3000 * 1000) / rate)) { transactionFee2 = 25; }
+    else if (receiveAmount >= ((3001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 40; }
+    else if (receiveAmount >= ((5001 * 1000) / rate) && receiveAmount <= ((8000 * 1000) / rate)) { transactionFee2 = 60; }
+    else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= maxCedisToCfa) { transactionFee2 = 80; }
   }
 //(GHANA to BCB)
   else if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && receiverCountry !== "TOGO") {
@@ -203,10 +203,10 @@ function calculateTransactionFee2() {
     else if (receiveAmount >= ((151 * 1000) / rate) && receiveAmount <= ((500 * 1000) / rate)) { transactionFee2 = 15; }
     else if (receiveAmount >= ((501 * 1000) / rate) && receiveAmount <= ((800 * 1000) / rate)) { transactionFee2 = 20; }
     else if (receiveAmount >= ((801 * 1000) / rate) && receiveAmount <= ((1200 * 1000) / rate)) { transactionFee2 = 25; }
-    else if (receiveAmount >= ((1201 * 1000) / rate) && receiveAmount <= ((2000 * 1000) / rate)) { transactionFee2 = 40; }
-    else if (receiveAmount >= ((2001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 50; }
+    else if (receiveAmount >= ((1201 * 1000) / rate) && receiveAmount <= ((3000 * 1000) / rate)) { transactionFee2 = 40; }
+    else if (receiveAmount >= ((3001 * 1000) / rate) && receiveAmount <= ((5000 * 1000) / rate)) { transactionFee2 = 50; }
     else if (receiveAmount >= ((5001 * 1000) / rate) && receiveAmount <= ((8000 * 1000) / rate)) { transactionFee2 = 80; }
-    else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= maxCedisToCfa) { transactionFee2 = 120; }
+    else if (receiveAmount >= ((8001 * 1000) / rate) && receiveAmount <= maxCedisToCfa) { transactionFee2 = 100; }
   }
 //(ALL COUNTRIES to GHANA)
   else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && receiveAmount) {
@@ -216,9 +216,9 @@ function calculateTransactionFee2() {
     else if ((receiveAmount >= ((rate2 * 20001) / 1000) && receiveAmount <= ((rate2 * 40000) / 1000))) { transactionFee2 = 2000; }
     else if ((receiveAmount >= ((rate2 * 40001) / 1000) && receiveAmount <= ((rate2 * 60000) / 1000))) { transactionFee2 = 3000; }
     else if ((receiveAmount >= ((rate2 * 60001) / 1000) && receiveAmount <= ((rate2 * 100000) / 1000))) { transactionFee2 = 4000; }
-    else if ((receiveAmount >= ((rate2 * 100001) / 1000) && receiveAmount <= ((rate2 * 200000) / 1000))) { transactionFee2 = 5000; }
-    else if ((receiveAmount >= ((rate2 * 200001) / 1000) && receiveAmount <= ((rate2 * 400000) / 1000))) { transactionFee2 = 8000; }
-    else if ((receiveAmount >= ((rate2 * 400001) / 1000) && receiveAmount <= maxForGhs)) { transactionFee2 = 10000; }
+    else if ((receiveAmount >= ((rate2 * 100001) / 1000) && receiveAmount <= ((rate2 * 300000) / 1000))) { transactionFee2 = 5000; }
+    else if ((receiveAmount >= ((rate2 * 300001) / 1000) && receiveAmount <= ((rate2 * 400000) / 1000))) { transactionFee2 = 7000; }
+    else if ((receiveAmount >= ((rate2 * 400001) / 1000) && receiveAmount <= maxForGhs)) { transactionFee2 = 8000; }
   }
   return transactionFee2;
 }
@@ -314,7 +314,7 @@ function calculateAmountToSend() {
 //Calculate Amount to receive
 function calculateAmountToReceive() {
   transactionFee = calculateTransactionFee();
-  let amountToReceive = (((sendAmount - transactionFee) / rate) * 1000);
+  let amountToReceive = 0;
   if (senderCountry === "GHANA" && receiverCountry !== "GHANA" && handleFee === "ADD FEE") {
     amountToReceive = ((sendAmount / rate) * 1000);
   } else if (senderCountry !== "GHANA" && receiverCountry === "GHANA" && handleFee === "ADD FEE") {
@@ -327,6 +327,8 @@ function calculateAmountToReceive() {
   return amountToReceive;
 }
 
+
+// This function clear all errors for Withdrawal fee functions.
 function clearWithdrawalError() {
   document.getElementById("addW").textContent = "Add withdrawal fee";
   document.getElementById("addW").className = "wdrlErrorOff";
