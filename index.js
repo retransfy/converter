@@ -4,7 +4,7 @@ document.getElementById("logo").addEventListener("dblclick", function(){
 })
 
 
-let rate = 20.4;
+let rate = 20.5;
 let rate2 = rate - 1;
 let senderCountry = document.getElementById("senderCountry").value;
 let receiverCountry = document.getElementById("receiverCountry").value;
